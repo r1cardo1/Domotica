@@ -7,8 +7,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="200.0" rotate="60.0" style="-fx-background-color: red;" translateX="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
+<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="900.0" rotate="60.0" style="-fx-background-color: red; -fx-border-color: black;" translateX="-202.0" translateY="-410.0" translateZ="63.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControlsController">
    <rotationAxis>
       <Point3D x="1.0" />
    </rotationAxis>
+   <children>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#rotateLeft" text="Button" />
+      <Button layoutX="834.0" layoutY="161.0" mnemonicParsing="false" onAction="#rotateRight" text="Button" />
+   </children>
 </AnchorPane>

@@ -5,9 +5,11 @@
  */
 package controller;
 
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.RotateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -53,6 +55,15 @@ public class MainWindowController implements Initializable {
     }
     
     @FXML
+    public void rotateLeft(ActionEvent evt){
+        root.setRotate(root.getRotate()+1);
+    }
+    
+    @FXML
+    public void rotateRight(ActionEvent evt){
+        root.setRotate(root.getRotate()-1);
+    }
+    
     public void keyPres(KeyEvent evt){
         root.setRotationAxis(Rotate.Z_AXIS);
             if(evt.getCode()==KeyCode.UP){
@@ -67,16 +78,19 @@ public class MainWindowController implements Initializable {
                 root.setRotate(root.getRotate()-1);
             }
             if(evt.getCode()==KeyCode.RIGHT){
-                root.setRotate(root.getRotate()+1);
+
             }            
         }    
     
-    @FXML
     public void mouse(MouseEvent evt){
         PickResult res = evt.getPickResult();
             System.out.println(res);
             MeshView m = (MeshView) res.getIntersectedNode();
             m.setMaterial(new PhongMaterial(Color.RED));
     }    
+    
+    public Group getRoot(){
+        return root;
+    }
     
 }

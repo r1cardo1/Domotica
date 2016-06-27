@@ -4,6 +4,7 @@
 <!-- FXML specification : JRE/JavaFX 8.0 early access build b128 -->
 <!-- Generator : ModelImporterJFX 0.4.1 of InteractiveMesh, www.interactivemesh.org/models/jfx3dbrowser.html -->
 
+<?import javafx.scene.layout.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
@@ -21,7 +22,7 @@
 <?import javafx.scene.transform.Affine?>
 <?import javafx.scene.transform.Rotate?>
 
-<Group id="AddedRootGroup_zUp" fx:id="root" focusTraversable="true" onKeyPressed="#keyPres" onMouseClicked="#mouse" scaleX="30.0" scaleY="30.0" scaleZ="30.0" translateX="200.0" translateY="200.0" translateZ="-50.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
+<Group id="AddedRootGroup_zUp" fx:id="root" focusTraversable="true" onKeyPressed="#keyPres" onMouseClicked="#mouse" scaleX="30.0" scaleY="30.0" scaleZ="30.0" translateX="200.0" translateY="200.0" translateZ="150.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
   <transforms>
     <Rotate angle="-90.0" pivotX="0.0" pivotY="0.0" pivotZ="0.0">
       <axis>

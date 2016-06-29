@@ -611,26 +611,12 @@
         </TriangleMesh>
       </mesh>
     </MeshView>
-    <PointLight id="Undefined" lightOn="true">
-      <transforms>
-        <Affine mxx="1.0" mxy="0.0" mxz="0.0" myx="0.0" myy="1.0" myz="0.0" mzx="0.0" mzy="0.0" mzz="1.0" tx="-0.529324" ty="-0.503601" tz="-0.682791" />
-      </transforms>
-      <color>
-        <Color blue="0.577348" green="0.584453" red="0.575818" />
-      </color>
-    </PointLight>
-    <PointLight id="Undefined_ncl1_1" lightOn="true">
-      <transforms>
-        <Affine mxx="1.0" mxy="0.0" mxz="0.0" myx="0.0" myy="1.0" myz="0.0" mzx="0.0" mzy="0.0" mzz="1.0" tx="-0.317022" ty="0.924579" tz="0.211309" />
-      </transforms>
-      <color>
-        <Color blue="0.34865" green="0.353512" red="0.347604" />
-      </color>
-    </PointLight>
-    <ParallelCamera id="Camera0" farClip="339.13196" nearClip="0.001">
-      <transforms>
-        <Affine mxx="1.0" mxy="0.0" mxz="0.0" myx="0.0" myy="1.0" myz="0.0" mzx="0.0" mzy="0.0" mzz="1.0" tx="0.0" ty="0.0" tz="0.0" />
-      </transforms>
-    </ParallelCamera>
+      <PointLight color="CHARTREUSE" lightOn="true" />
+      <PointLight color="CHARTREUSE" lightOn="true" />
+      <PointLight color="CHARTREUSE" lightOn="true" />
+      <PointLight color="CHARTREUSE" lightOn="true" />
+      <PointLight color="CHARTREUSE" layoutX="10.0" layoutY="10.0" lightOn="true" />
+      <PointLight color="CHARTREUSE" layoutX="20.0" layoutY="20.0" lightOn="true" />
+      <PointLight color="CHARTREUSE" layoutX="30.0" layoutY="30.0" lightOn="true" />
   </children>
 </Group>

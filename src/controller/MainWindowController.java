@@ -84,7 +84,7 @@ public class MainWindowController implements Initializable {
     
     public void mouse(MouseEvent evt){
         PickResult res = evt.getPickResult();
-            System.out.println(res);
+            
             MeshView m = (MeshView) res.getIntersectedNode();
             m.setMaterial(new PhongMaterial(Color.RED));
     }    

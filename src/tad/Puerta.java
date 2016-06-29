@@ -69,10 +69,6 @@ public class Puerta {
         this.modeloMaterial = modeloMaterial;
     }
 
-    public void setAbierta(Boolean abierta) {
-        this.abierta = abierta;
-    }
-
     public void setModel(MeshView model) {
         this.model = model;
     }
@@ -85,5 +81,11 @@ public class Puerta {
         
     }
     
+    public void cambiaMaterial(){
+        
+    }
     
+    public void cambiaModelo(){
+        
+    }
 }

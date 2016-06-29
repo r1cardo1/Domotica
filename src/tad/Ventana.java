@@ -68,14 +68,6 @@ public class Ventana {
         this.modeloMaterial = modeloMaterial;
     }
 
-    public void setAbiertaIzq(Boolean abierta) {
-        this.abiertaIzq = abierta;
-    }
-
-    public void setAbiertaDer(Boolean abiertaDer) {
-        this.abiertaDer = abiertaDer;
-    }
-
     public void setSolIzq(MeshView solIzq) {
         this.solIzq = solIzq;
     }

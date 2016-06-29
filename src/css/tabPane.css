@@ -1,0 +1,29 @@
+.tab-pane:top .tab-header-area .tab-header-background{
+    -fx-background-color: black;
+}
+
+.tab-pane .tab-header-area .headers-region .tab:top{
+    -fx-background-color: black;
+    -fx-background-radius: 8 8 0 0;
+    -fx-text-fill: WHITE;
+    -fx-border-color: WHITE;
+    -fx-border-radius: 8 8 0 0;
+    
+}
+
+.tab-pane .tab-header-area .headers-region .tab:top .tab-container .tab-label{
+    -fx-text-fill:white;    
+}
+
+.tab-pane .tab-header-area .headers-region .tab:selected{
+    -fx-background-color: darkslategrey;
+    -fx-background-radius: 8 8 0 0;
+    -fx-text-fill: WHITE;
+    -fx-border-color: blue;
+    -fx-border-width: 2px;
+    -fx-border-radius: 8 8 0 0;
+    
+    
+}
+
+

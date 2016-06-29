@@ -15,12 +15,12 @@ public class Puerta {
     
     private double alto;
     private double ancho;
-    private double material;
-    private double modeloMaterial;
+    private String material;
+    private String modeloMaterial;
     private Boolean abierta;
     private MeshView model;
 
-    public Puerta(double alto, double ancho, double material, double modeloMaterial, MeshView model) {
+    public Puerta(double alto, double ancho, String material, String modeloMaterial, MeshView model) {
         this.alto = alto;
         this.ancho = ancho;
         this.material = material;
@@ -37,11 +37,11 @@ public class Puerta {
         return ancho;
     }
 
-    public double getMaterial() {
+    public String getMaterial() {
         return material;
     }
 
-    public double getModeloMaterial() {
+    public String getModeloMaterial() {
         return modeloMaterial;
     }
 
@@ -61,11 +61,11 @@ public class Puerta {
         this.ancho = ancho;
     }
 
-    public void setMaterial(double material) {
+    public void setMaterial(String material) {
         this.material = material;
     }
 
-    public void setModeloMaterial(double modeloMaterial) {
+    public void setModeloMaterial(String modeloMaterial) {
         this.modeloMaterial = modeloMaterial;
     }
 

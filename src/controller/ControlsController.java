@@ -11,7 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
-import javafx.scene.Node;
+import tad.Casa;
 
 /**
  * FXML Controller class
@@ -21,8 +21,8 @@ import javafx.scene.Node;
 
     
 public class ControlsController implements Initializable {
-    
-    Group root;
+    private Casa home;
+    private Group root;
     private MainWindowController controller;
     
     @Override
@@ -36,17 +36,19 @@ public class ControlsController implements Initializable {
     
     @FXML
     public void rotateLeft(ActionEvent evt){
-        Group root;
-        root = controller.getRoot();
-        root.setRotate(root.getRotate()+10);
+        Group r;
+        r = controller.getRoot();
+        r.setRotate(r.getRotate()+10);
     }
     
     @FXML
     public void rotateRight(ActionEvent evt){
-        Group root;
-        root = controller.getRoot();
-        root.setRotate(root.getRotate()-10);
+        Group r;
+        r = controller.getRoot();
+        r.setRotate(r.getRotate()-10);
     }
   
-    
+    public void setCasa(Casa c){
+        this.home = c;
+    }
 }

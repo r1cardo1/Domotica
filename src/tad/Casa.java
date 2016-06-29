@@ -6,6 +6,7 @@
 package tad;
 
 import java.util.ArrayList;
+import javafx.scene.Group;
 
 /**
  *
@@ -17,6 +18,15 @@ public class Casa {
     private ArrayList<Pared> paredes;
     private ArrayList<Puerta> puertas;
     private ArrayList<Ventana> ventanas;
+    private Group casa;
+
+    public void setCasa(Group casa) {
+        this.casa = casa;
+    }
+
+    public Group getCasa() {
+        return casa;
+    }
     
     public Casa(){
         luces = new ArrayList<>();

@@ -5,6 +5,8 @@
  */
 package tad;
 
+import javafx.scene.image.Image;
+import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
 
 /**
@@ -30,6 +32,10 @@ public class Ventana {
         this.solDer = solDer;
         this.abiertaIzq = false;
         this.abiertaDer = false;
+        PhongMaterial phongMaterial = new PhongMaterial();
+        phongMaterial.setDiffuseMap(new Image(getClass().getResource("/images/window.jpg").toExternalForm()));
+        solIzq.setMaterial(phongMaterial);
+        solDer.setMaterial(phongMaterial);
     }
 
     public double getAlto() {

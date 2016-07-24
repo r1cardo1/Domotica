@@ -13,6 +13,8 @@ import javafx.scene.Group;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
 import javafx.scene.SceneAntialiasing;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
@@ -34,11 +36,10 @@ public class Domotica extends Application {
     @Override
     public void start(Stage stage) throws Exception {
     final Group root = new Group();
-    addFloor(root);
-    
+    addFloor(root);    
     // Load home graphic
     
-    FXMLLoader loaderHome = new FXMLLoader(getClass().getResource("/fxml/Drawing1.fxml"));
+    FXMLLoader loaderHome = new FXMLLoader(getClass().getResource("/fxml/Drawing2.fxml"));
 
     // Load control panel
     
@@ -58,9 +59,28 @@ public class Domotica extends Application {
     // init TAD Data
     System.out.println(homeLoad.toString());
         initData(homeLoad);
+        
+        
+    
     stage2.setCasa(home);
     Scene scene = new Scene(root,900,700,true,SceneAntialiasing.BALANCED);
     scene.setCamera(addCamera());
+    
+    scene.setOnKeyPressed(evt ->{
+        if(evt.getCode() == KeyCode.D)
+            homeLoad.setTranslateY(homeLoad.getTranslateY()+10);
+        if(evt.getCode() == KeyCode.C)
+            homeLoad.setTranslateY(homeLoad.getTranslateY()-10);
+        if(evt.getCode() == KeyCode.X)
+            homeLoad.setTranslateX(homeLoad.getTranslateX()+10);
+        if(evt.getCode() == KeyCode.S)
+            homeLoad.setTranslateX(homeLoad.getTranslateX()-10);
+        if(evt.getCode() == KeyCode.A)
+            homeLoad.setTranslateZ(homeLoad.getTranslateZ()+10);
+        if(evt.getCode() == KeyCode.Z)
+            homeLoad.setTranslateZ(homeLoad.getTranslateZ()-10);
+    });
+    
     stage.setScene(scene);
     stage.setTitle("JavaFX 3D");
     stage.show();
@@ -71,7 +91,9 @@ public class Domotica extends Application {
         floor.setTranslateX(200);
         floor.setTranslateY(200);
         floor.setTranslateZ(250);
-        floor.setMaterial(new PhongMaterial(Color.YELLOW));
+         PhongMaterial phongMaterial = new PhongMaterial();
+        phongMaterial.setDiffuseMap(new Image(getClass().getResource("/images/piso.jpg").toExternalForm()));
+        floor.setMaterial(phongMaterial);
         root.getChildren().add(floor);
     }
     
@@ -90,6 +112,8 @@ public class Domotica extends Application {
         ArrayList<String> paredes = loadParedes();
         MeshView si=null;
         MeshView sd=null;
+        
+        
         
         // Agrega ventanas al TAD
         for(int i=0;i<ventanas.size()-2;i+=2){
@@ -110,7 +134,7 @@ public class Domotica extends Application {
         
         for(int i=0;i<rot.getChildren().size();i++){
             if(paredes.contains(rot.getChildren().get(i).getId()))            
-                home.agregaPared(new Pared(1.9,"concreto","azul"));
+                home.agregaPared(new Pared(1.9,"concreto","azul",(MeshView)rot.getChildren().get(i)));
         }        
         home.setCasa(rot);
     }

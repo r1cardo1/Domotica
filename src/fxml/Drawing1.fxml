@@ -611,12 +611,5 @@
         </TriangleMesh>
       </mesh>
     </MeshView>
-      <PointLight color="WHITE" layoutX="10.0" layoutY="10.0" lightOn="true" />
-      <PointLight color="WHITE" layoutX="10.0" layoutY="10.0" lightOn="true" />
-      <PointLight color="WHITE" layoutX="10.0" layoutY="10.0" lightOn="true" />
-      <PointLight color="WHITE" layoutX="10.0" layoutY="10.0" lightOn="true" />
-      <PointLight color="WHITE" layoutX="40.0" layoutY="10.0" lightOn="true" />
-      <PointLight color="WHITE" layoutX="70.0" layoutY="20.0" lightOn="true" />
-      <PointLight color="WHITE" layoutX="100.0" layoutY="30.0" lightOn="true" />
   </children>
 </Group>

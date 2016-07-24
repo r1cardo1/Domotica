@@ -5,6 +5,8 @@
  */
 package tad;
 
+import javafx.scene.image.Image;
+import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
 
 /**
@@ -27,6 +29,9 @@ public class Puerta {
         this.modeloMaterial = modeloMaterial;
         this.model = model;
         abierta = false;
+        PhongMaterial phongMaterial = new PhongMaterial();
+        phongMaterial.setDiffuseMap(new Image(getClass().getResource("/images/puerta.jpg").toExternalForm()));
+        model.setMaterial(phongMaterial);
     }
 
     public double getAlto() {

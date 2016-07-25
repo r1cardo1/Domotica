@@ -38,15 +38,82 @@ public class ControlsController implements Initializable {
     public void rotateLeft(ActionEvent evt){
         Group r;
         r = controller.getRoot();
-        r.setRotate(r.getRotate()+10);
+        r.setRotate(r.getRotate()+5);
     }
     
     @FXML
     public void rotateRight(ActionEvent evt){
         Group r;
         r = controller.getRoot();
-        r.setRotate(r.getRotate()-10);
+        r.setRotate(r.getRotate()-5);
     }
+    
+    @FXML
+    public void openDoorCocina(ActionEvent evt){
+        home.getCocina().getPuerta().abrePuerta();
+    }
+    @FXML
+    public void openDoorSala(ActionEvent evt){
+        home.getLobby().getPuerta().abrePuerta();
+    }
+        
+    @FXML
+    public void openDoorHabPrim(ActionEvent evt){
+        home.getHabPrimaria().getPuerta().abrePuerta();
+    }
+    
+    @FXML
+    public void openDoorHabPrimTra(ActionEvent evt){
+        home.getHabTraseraPrim().getPuerta().abrePuerta();
+    }
+    
+    @FXML
+    public void openDoorHabSeg(ActionEvent evt){
+        home.getHabTraseraSec().getPuerta().abrePuerta();
+    }
+    
+    @FXML
+    public void openDoorBanPri(ActionEvent evt){
+        home.getBanPrincipal().getPuerta().abrePuerta();
+    }
+    
+    @FXML
+    public void openDoorBanSec(ActionEvent evt){
+        home.getBanSegundario().getPuerta().abrePuerta();
+    }
+    
+    @FXML
+    public void closeDoorSala(ActionEvent evt){
+        home.getLobby().getPuerta().cierraPuerta();
+    }
+    
+    @FXML
+    public void closeDoorHabPrim(ActionEvent evt){
+        home.getHabPrimaria().getPuerta().cierraPuerta();
+    }
+
+    @FXML
+    public void closeDoorHabPrimTra(ActionEvent evt){
+        home.getHabTraseraPrim().getPuerta().cierraPuerta();
+    }
+    
+    @FXML
+    public void closeDoorHabSeg(ActionEvent evt){
+        home.getHabTraseraSec().getPuerta().cierraPuerta();
+    }
+    
+    @FXML
+    public void closeDoorBanPrin(ActionEvent evt){
+        home.getBanPrincipal().getPuerta().cierraPuerta();
+    }
+    
+    @FXML
+    public void closeDoorBanSeg(ActionEvent evt){
+        home.getBanSegundario().getPuerta().cierraPuerta();
+    }
+    
+    
+    
   
     public void setCasa(Casa c){
         this.home = c;

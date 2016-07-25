@@ -5,9 +5,15 @@
  */
 package tad;
 
+import javafx.animation.RotateTransition;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.paint.PhongMaterial;
+import javafx.scene.shape.DrawMode;
 import javafx.scene.shape.MeshView;
+import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Translate;
+import javafx.util.Duration;
 
 /**
  *
@@ -18,20 +24,20 @@ public class Puerta {
     private double alto;
     private double ancho;
     private String material;
-    private String modeloMaterial;
     private Boolean abierta;
     private MeshView model;
 
-    public Puerta(double alto, double ancho, String material, String modeloMaterial, MeshView model) {
+    public Puerta(double alto, double ancho, String material, MeshView model) {
         this.alto = alto;
         this.ancho = ancho;
         this.material = material;
-        this.modeloMaterial = modeloMaterial;
         this.model = model;
         abierta = false;
+        model.setDrawMode(DrawMode.FILL);
         PhongMaterial phongMaterial = new PhongMaterial();
         phongMaterial.setDiffuseMap(new Image(getClass().getResource("/images/puerta.jpg").toExternalForm()));
         model.setMaterial(phongMaterial);
+        movePivot(model,12,12);
     }
 
     public double getAlto() {
@@ -44,10 +50,6 @@ public class Puerta {
 
     public String getMaterial() {
         return material;
-    }
-
-    public String getModeloMaterial() {
-        return modeloMaterial;
     }
 
     public Boolean getAbierta() {
@@ -69,17 +71,25 @@ public class Puerta {
     public void setMaterial(String material) {
         this.material = material;
     }
-
-    public void setModeloMaterial(String modeloMaterial) {
-        this.modeloMaterial = modeloMaterial;
-    }
-
+    
     public void setModel(MeshView model) {
         this.model = model;
     }
     
     public void abrePuerta(){
+        RotateTransition rt = new RotateTransition();
+        rt.setNode(this.model);
+        rt.setByAngle(90);
+        rt.setAxis(Rotate.Y_AXIS);
         
+        rt.setDuration(Duration.millis(500));
+        rt.play();
+    }
+    
+    private void movePivot(Node node, double x, double y){
+        node.getTransforms().add(new Translate(-x,-y));
+        node.setTranslateX(x); 
+        node.setTranslateY(y);
     }
     
     public void cierraPuerta(){

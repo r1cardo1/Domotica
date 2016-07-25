@@ -6,6 +6,7 @@
 package tad;
 
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
 
@@ -17,25 +18,19 @@ public class Ventana {
     private double alto;
     private double ancho;
     private String material;
-    private String modeloMaterial;
     private Boolean abiertaIzq;
     private Boolean abiertaDer;
     private MeshView solIzq;
     private MeshView solDer;
 
-    public Ventana(double alto, double ancho, String material, String modeloMaterial, MeshView solIzq, MeshView solDer) {
+    public Ventana(double alto, double ancho, String material, MeshView solIzq, MeshView solDer) {
         this.alto = alto;
         this.ancho = ancho;
         this.material = material;
-        this.modeloMaterial = modeloMaterial;
         this.solIzq = solIzq;
         this.solDer = solDer;
         this.abiertaIzq = false;
         this.abiertaDer = false;
-        PhongMaterial phongMaterial = new PhongMaterial();
-        phongMaterial.setDiffuseMap(new Image(getClass().getResource("/images/window.jpg").toExternalForm()));
-        solIzq.setMaterial(phongMaterial);
-        solDer.setMaterial(phongMaterial);
     }
 
     public double getAlto() {
@@ -48,10 +43,6 @@ public class Ventana {
 
     public String getMaterial() {
         return material;
-    }
-
-    public String getModeloMaterial() {
-        return modeloMaterial;
     }
 
     public Boolean getAbiertaIzq() {
@@ -68,10 +59,6 @@ public class Ventana {
 
     public void setMaterial(String material) {
         this.material = material;
-    }
-
-    public void setModeloMaterial(String modeloMaterial) {
-        this.modeloMaterial = modeloMaterial;
     }
 
     public void setSolIzq(MeshView solIzq) {

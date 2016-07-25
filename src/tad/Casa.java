@@ -14,10 +14,13 @@ import javafx.scene.Group;
  */
 public class Casa {
     
-    private ArrayList<Luz> luces;
-    private ArrayList<Pared> paredes;
-    private ArrayList<Puerta> puertas;
-    private ArrayList<Ventana> ventanas;
+    private Bano banPrincipal;
+    private Bano banSegundario;
+    private Habitacion habPrimaria;
+    private Habitacion habTraseraPrim;
+    private Habitacion habTraseraSec;
+    private Cocina cocina;
+    private Sala lobby;
     private Group casa;
 
     public void setCasa(Group casa) {
@@ -27,45 +30,87 @@ public class Casa {
     public Group getCasa() {
         return casa;
     }
-    
-    public Casa(){
-        luces = new ArrayList<>();
-        paredes = new ArrayList<>();
-        puertas = new ArrayList<>();
-        ventanas = new ArrayList<>();
-    }
-    
-    public void agregaPared(Pared p){
-        paredes.add(p);
-    }
-    
-    public void agregaVentana(Ventana v){
-        ventanas.add(v);
-    }
-    
-    public void agregaPuerta(Puerta p){
-        puertas.add(p);
-    }
-    
-    public void agregaLuces(Luz l){
-        luces.add(l);
+
+    public Casa(Bano banPrincipal, Bano banSegundario, Habitacion habPrimaria, Habitacion habTraseraPrim, Habitacion habTraseraSec, Cocina cocina, Sala lobby, Group casa) {
+        this.banPrincipal = banPrincipal;
+        this.banSegundario = banSegundario;
+        this.habPrimaria = habPrimaria;
+        this.habTraseraPrim = habTraseraPrim;
+        this.habTraseraSec = habTraseraSec;
+        this.cocina = cocina;
+        this.lobby = lobby;
+        this.casa = casa;
     }
 
-    public ArrayList<Luz> getLuces() {
-        return luces;
+    public Casa() {
+        
     }
 
-    public ArrayList<Pared> getParedes() {
-        return paredes;
+    public Bano getBanPrincipal() {
+        return banPrincipal;
     }
 
-    public ArrayList<Puerta> getPuertas() {
-        return puertas;
+    public Bano getBanSegundario() {
+        return banSegundario;
     }
 
-    public ArrayList<Ventana> getVentanas() {
-        return ventanas;
+    public Habitacion getHabPrimaria() {
+        return habPrimaria;
     }
-    
-    
+
+    public Habitacion getHabTraseraPrim() {
+        return habTraseraPrim;
+    }
+
+    public Habitacion getHabTraseraSec() {
+        return habTraseraSec;
+    }
+
+    public Cocina getCocina() {
+        return cocina;
+    }
+
+    public Sala getLobby() {
+        return lobby;
+    }
+
+    public void setBanPrincipal(Bano banPrincipal) {
+        this.banPrincipal = banPrincipal;
+    }
+
+    public void setBanSegundario(Bano banSegundario) {
+        this.banSegundario = banSegundario;
+    }
+
+    public void setHabPrimaria(Habitacion habPrimaria) {
+        this.habPrimaria = habPrimaria;
+    }
+
+    public void setHabTraseraPrim(Habitacion habTraseraPrim) {
+        this.habTraseraPrim = habTraseraPrim;
+    }
+
+    public void setHabTraseraSec(Habitacion habTraseraSec) {
+        this.habTraseraSec = habTraseraSec;
+    }
+
+    public void setCocina(Cocina cocina) {
+        this.cocina = cocina;
+    }
+
+    public void setLobby(Sala lobby) {
+        this.lobby = lobby;
+    }    
+
+    public void agregaVentana(Ventana ventana) {
+        
+    }
+
+    public void agregaPuerta(Puerta puerta) {
+        
+    }
+
+    public void agregaPared(Pared pared) {
+        
+    }
 }

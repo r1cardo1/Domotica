@@ -32,7 +32,7 @@ public class MainWindowController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        root.setRotate(root.getRotate()+180);
     }
     
     public void closeDoor(Node n){

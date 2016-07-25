@@ -22,9 +22,14 @@ import javafx.scene.shape.MeshView;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
+import tad.Bano;
 import tad.Casa;
+import tad.Cocina;
+import tad.Habitacion;
+import tad.Luz;
 import tad.Pared;
 import tad.Puerta;
+import tad.Sala;
 import tad.Ventana;
 
 public class Domotica extends Application {
@@ -39,7 +44,7 @@ public class Domotica extends Application {
     addFloor(root);    
     // Load home graphic
     
-    FXMLLoader loaderHome = new FXMLLoader(getClass().getResource("/fxml/Drawing2.fxml"));
+    FXMLLoader loaderHome = new FXMLLoader(getClass().getResource("/fxml/Drawing3.fxml"));
 
     // Load control panel
     
@@ -58,7 +63,7 @@ public class Domotica extends Application {
     
     // init TAD Data
     System.out.println(homeLoad.toString());
-        initData(homeLoad);
+        initD(homeLoad);
         
         
     
@@ -106,73 +111,54 @@ public class Domotica extends Application {
         return cam;
     }
     
-    public void initData(Group rot) throws IOException{
-        ArrayList<String> ventanas = loadVentanas();
-        ArrayList<String> puertas = loadPuertas();
-        ArrayList<String> paredes = loadParedes();
-        MeshView si=null;
-        MeshView sd=null;
+    
+    public void initD(Group root){
+        ///// Datos Habitacion Primaria
+        home.setHabPrimaria(new Habitacion(new Puerta(1.9,0.80,"Madera",findMesh(root,"_ncl1_23")),
+                new Ventana(1.0,1.5,"Cristal",findMesh(root,"_ncl1_28"),findMesh(root,"_ncl1_8")),
+                new Luz(1.0,Color.WHITE,findMesh(root,"_ncl1_38"))));
         
+        ///// Datos Habitacion segundaria
+        home.setHabTraseraPrim(new Habitacion(new Puerta(1.9,0.80,"Madera",findMesh(root,"_ncl1_24")),
+                new Ventana(1.0,1.5,"Cristal",findMesh(root,"_ncl1_13"),findMesh(root,"_ncl1_11")),
+                new Ventana(1.0,1.5,"Cristal",findMesh(root,"_ncl1_17"),findMesh(root,"_ncl1_16")),
+                new Luz(1.0,Color.WHITE,findMesh(root,"_ncl1_37"))));
         
+        ///// Datos tercera habitacion
+        home.setHabTraseraSec(new Habitacion(new Puerta(1.9,0.80,"Madera",findMesh(root,"_ncl1_19")),
+                new Ventana(1.0,1.5,"Cristal",findMesh(root,"_ncl1_18"),findMesh(root,"_ncl1_15")),
+                new Ventana(1.0,1.5,"Cristal",findMesh(root,"_ncl1_12"),findMesh(root,"_ncl1_14")),
+                new Luz(1.0,Color.WHITE,findMesh(root,"_ncl1_34"))));
         
-        // Agrega ventanas al TAD
-        for(int i=0;i<ventanas.size()-2;i+=2){
-            for(int j=0;j<rot.getChildren().size()-7;j++){
-                if(rot.getChildren().get(j).getId().equals(ventanas.get(i)))
-                    si = (MeshView) rot.getChildren().get(j);
-                if(rot.getChildren().get(j).getId().equals(ventanas.get(i+1)))
-                    sd = (MeshView) rot.getChildren().get(j);
-            }
-            home.agregaVentana(new Ventana(1,1.5,"cristal","ahumado1",si,sd));
-        }
+        ///// Datos Sala
+        home.setLobby(new Sala(new Puerta(1.9,0.80,"Madera",findMesh(root,"_ncl1_27")),
+                new Ventana(1.0,1.5,"Cristal",findMesh(root,"_ncl1_2"),findMesh(root,"_ncl1_4")),
+                new Ventana(1.0,1.5,"Cristal",findMesh(root,"_ncl1_26"),findMesh(root,"_ncl1_25")),
+                new Luz(1.0,Color.WHITE,findMesh(root,"_ncl1_32"))));
         
-        // Agrega puertas al TAD
-        for(int i=0;i<rot.getChildren().size();i++){
-            if(puertas.contains(rot.getChildren().get(i).getId()))            
-                home.agregaPuerta(new Puerta(1.9,0.8,"madera","caoba",(MeshView)rot.getChildren().get(i)));
-        }
+        ///// Datos Cocina
+        home.setCocina(new Cocina(new Luz(1.0,Color.WHITE,findMesh(root,"_ncl1_31")),
+                new Luz(1.0,Color.WHITE,findMesh(root,"_ncl1_33")),
+                new Ventana(1.0,1.5,"Cristal",findMesh(root,"_ncl1_6"),findMesh(root,"_ncl1_7")),
+                new Ventana(1.0,1.5,"Cristal",findMesh(root,"_ncl1_9"),findMesh(root,"_ncl1_10")),
+                new Ventana(1.0,1.5,"Cristal",findMesh(root,"_ncl1_3"),findMesh(root,"_ncl1_5")),
+                new Puerta(1.9,0.80,"Madera",findMesh(root,"_ncl1_20"))));
         
-        for(int i=0;i<rot.getChildren().size();i++){
-            if(paredes.contains(rot.getChildren().get(i).getId()))            
-                home.agregaPared(new Pared(1.9,"concreto","azul",(MeshView)rot.getChildren().get(i)));
-        }        
-        home.setCasa(rot);
+        ///// Datos baño principal
+        home.setBanPrincipal(new Bano(new Luz(1.0,Color.WHITE,findMesh(root,"_ncl1_36")),
+                new Puerta(1.9,0.80,"Madera",findMesh(root,"_ncl1_22"))));
+        
+        ///// Datos baño segundario
+        home.setBanSegundario(new Bano(new Luz(1.0,Color.WHITE,findMesh(root,"_ncl1_35")),
+                new Puerta(1.9,0.80,"Madera",findMesh(root,"_ncl1_21"))));
     }
     
-    public ArrayList<String> loadVentanas() throws FileNotFoundException, IOException{
-        ArrayList<String> list = new ArrayList<>();
-        String cadena;
-        FileReader f = new FileReader("src/data/ventanas.txt");
-        BufferedReader b = new BufferedReader(f);
-        while((cadena = b.readLine())!=null) {
-            list.add(cadena);
+    public MeshView findMesh(Group root,String mesh){
+        for(int i=0;i<root.getChildren().size();i++){
+            if(root.getChildren().get(i).getId().equals(mesh))
+                return (MeshView) root.getChildren().get(i);
         }
-        b.close();
-        return list;
-    }
-    
-    public ArrayList<String> loadPuertas() throws FileNotFoundException, IOException{
-        ArrayList<String> list = new ArrayList<>();
-        String cadena;
-        FileReader f = new FileReader("src/data/puertas.txt");
-        BufferedReader b = new BufferedReader(f);
-        while((cadena = b.readLine())!=null) {
-            list.add(cadena);
-        }
-        b.close();
-        return list;
-    }
-        
-    public ArrayList<String> loadParedes() throws FileNotFoundException, IOException{
-        ArrayList<String> list = new ArrayList<>();
-        String cadena;
-        FileReader f = new FileReader("src/data/paredes.txt");
-        BufferedReader b = new BufferedReader(f);
-        while((cadena = b.readLine())!=null) {
-            list.add(cadena);
-        }
-        b.close();
-        return list;
+        return null;
     }
 
     public static void main(String[] args) throws IOException {

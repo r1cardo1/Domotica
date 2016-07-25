@@ -23,7 +23,7 @@ public class Pared {
         this.pintura = pintura;
         this.pared = pared;
         PhongMaterial phongMaterial = new PhongMaterial();
-        Image diffuseMap = new Image(getClass().getResource("/images/wall.png").toExternalForm());
+        Image diffuseMap = new Image(getClass().getResource("/images/wall.jpg").toExternalForm());
         phongMaterial.setDiffuseMap(diffuseMap);        
         pared.setDrawMode(DrawMode.FILL);
         pared.setMaterial(phongMaterial);

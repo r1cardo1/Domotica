@@ -52,6 +52,7 @@ public class ControlsController implements Initializable {
     public void openDoorCocina(ActionEvent evt){
         home.getCocina().getPuerta().abrePuerta();
     }
+    
     @FXML
     public void openDoorSala(ActionEvent evt){
         home.getLobby().getPuerta().abrePuerta();
@@ -83,6 +84,11 @@ public class ControlsController implements Initializable {
     }
     
     @FXML
+    public void closeDoorCocina(ActionEvent evt){
+        home.getCocina().getPuerta().cierraPuerta();
+    }
+    
+    @FXML
     public void closeDoorSala(ActionEvent evt){
         home.getLobby().getPuerta().cierraPuerta();
     }
@@ -103,16 +109,74 @@ public class ControlsController implements Initializable {
     }
     
     @FXML
-    public void closeDoorBanPrin(ActionEvent evt){
+    public void closeDoorBanPri(ActionEvent evt){
         home.getBanPrincipal().getPuerta().cierraPuerta();
     }
     
     @FXML
-    public void closeDoorBanSeg(ActionEvent evt){
+    public void closeDoorBanSec(ActionEvent evt){
         home.getBanSegundario().getPuerta().cierraPuerta();
     }
     
+    @FXML
+    public void openWindowizQHabPrim(ActionEvent evt){
+        home.getHabPrimaria().getVentana1().abreVentanaIzq();
+    }
     
+    @FXML
+    public void openWindowDerHabPrim(ActionEvent evt){
+        home.getHabPrimaria().getVentana1().abreVentanaDer();
+    }
+    
+    @FXML
+    public void closeWindowIzqHabPrim(ActionEvent evt){
+        home.getHabPrimaria().getVentana1().cierraVentanaIzq();
+    }
+    
+    @FXML
+    public void closeWindowDerHabPrim(ActionEvent evt){
+        home.getHabPrimaria().getVentana1().cierraVentanaDer();
+    }
+    
+    @FXML
+    public void openWindowIzqHabPrimTra1(ActionEvent evt){
+        home.getHabTraseraPrim().getVentana1().abreVentanaIzq();
+    }
+    
+    @FXML
+    public void openWindowDerHabPrimTra1(ActionEvent evt){
+        home.getHabTraseraPrim().getVentana1().abreVentanaDer();
+    }
+    
+    @FXML
+    public void openWindowIzqHabPrimTra2(ActionEvent evt){
+        home.getHabTraseraPrim().getVentana2().abreVentanaIzq();
+    }
+    
+    @FXML
+    public void openWindowDerHabPrimTra2(ActionEvent evt){
+        home.getHabTraseraPrim().getVentana2().abreVentanaDer();
+    }
+    
+    @FXML
+    public void closeWindowIzqHabPrimTra1(ActionEvent evt){
+        home.getHabTraseraPrim().getVentana1().cierraVentanaIzq();
+    }
+    
+    @FXML
+    public void closeWindowDerHabPrimTra1(ActionEvent evt){
+        home.getHabTraseraPrim().getVentana1().cierraVentanaDer();
+    }
+    
+    @FXML
+    public void closeWindowIzqHabPrimTra2(ActionEvent evt){
+        home.getHabTraseraPrim().getVentana2().cierraVentanaIzq();
+    }
+    
+    @FXML
+    public void closeWindowDerHabPrimTra2(ActionEvent evt){
+        home.getHabTraseraPrim().getVentana2().cierraVentanaDer();
+    }
     
   
     public void setCasa(Casa c){

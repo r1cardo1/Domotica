@@ -5,9 +5,7 @@
  */
 package tad;
 
-import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.PhongMaterial;
+import javafx.animation.TranslateTransition;
 import javafx.scene.shape.MeshView;
 
 /**
@@ -83,18 +81,55 @@ public class Ventana {
     
     public void abreVentanaIzq(){
         
+        if(!abiertaIzq && !abiertaDer){
+            TranslateTransition tt = new TranslateTransition();
+            tt.setNode(solIzq);
+            if(solIzq.getLayoutBounds().getDepth()<10)
+                tt.setByX(-20);
+            else
+                tt.setByZ(-20);
+            tt.play();
+            abiertaIzq = true;
+        }
     }
     
     public void abreVentanaDer(){
-        
+        if(!abiertaIzq && !abiertaDer){
+            TranslateTransition tt = new TranslateTransition();
+            tt.setNode(solDer);
+            if(solDer.getLayoutBounds().getDepth()<10)
+                tt.setByX(20);
+            else
+                tt.setByZ(20);
+            tt.play();
+            abiertaDer = true;
+        }
     }
     
     public void cierraVentanaIzq(){
-        
+        if(abiertaIzq){
+            TranslateTransition tt = new TranslateTransition();
+            tt.setNode(solIzq);
+            if(solIzq.getLayoutBounds().getDepth()<10)
+                tt.setByX(20);
+            else
+                tt.setByZ(20);
+            tt.play();
+            abiertaIzq = false;
+        }
     }
     
     public void cierraVentanaDer(){
-        
+        if(abiertaDer){
+            TranslateTransition tt = new TranslateTransition();
+            tt.setNode(solDer);
+            if(solDer.getLayoutBounds().getDepth()<10)
+                tt.setByX(-20);
+            else
+                tt.setByZ(-20);
+            tt.play();
+            abiertaDer = false;
+        }
     }
     
 }

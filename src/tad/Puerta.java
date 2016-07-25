@@ -33,11 +33,14 @@ public class Puerta {
         this.material = material;
         this.model = model;
         abierta = false;
-        model.setDrawMode(DrawMode.FILL);
         PhongMaterial phongMaterial = new PhongMaterial();
         phongMaterial.setDiffuseMap(new Image(getClass().getResource("/images/puerta.jpg").toExternalForm()));
         model.setMaterial(phongMaterial);
-        movePivot(model,12,12);
+        
+        if(model.getLayoutBounds().getDepth()<10)
+            movePivot(model,12,12);
+        else
+            movePivot(model,12,12,true);
     }
 
     public double getAlto() {
@@ -77,13 +80,15 @@ public class Puerta {
     }
     
     public void abrePuerta(){
-        RotateTransition rt = new RotateTransition();
-        rt.setNode(this.model);
-        rt.setByAngle(90);
-        rt.setAxis(Rotate.Y_AXIS);
-        
-        rt.setDuration(Duration.millis(500));
-        rt.play();
+        if(!abierta){
+            RotateTransition rt = new RotateTransition();
+            rt.setNode(this.model);
+            rt.setByAngle(90);
+            rt.setAxis(Rotate.Y_AXIS);        
+            rt.setDuration(Duration.millis(500));
+            rt.play();
+            abierta = true;
+        }
     }
     
     private void movePivot(Node node, double x, double y){
@@ -92,8 +97,22 @@ public class Puerta {
         node.setTranslateY(y);
     }
     
+    private void movePivot(Node node, double x, double y,Boolean flag){
+        node.getTransforms().add(new Translate(0,x,y));
+        node.setTranslateY(-x); 
+        node.setTranslateZ(-y);
+    }
+    
     public void cierraPuerta(){
-        
+        if(abierta){
+            RotateTransition rt = new RotateTransition();
+            rt.setNode(this.model);
+            rt.setByAngle(-90);
+            rt.setAxis(Rotate.Y_AXIS);        
+            rt.setDuration(Duration.millis(500));
+            rt.play();
+            abierta = false;
+        }
     }
     
     public void cambiaMaterial(){

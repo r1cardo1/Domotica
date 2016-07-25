@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,149 +9,276 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="900.0" rotate="60.0" translateX="-202.0" translateY="-410.0" translateZ="63.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControlsController">
+<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="900.0" rotate="60.0" stylesheets="@../css/tabPane.css" translateX="-202.0" translateY="-410.0" translateZ="63.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControlsController">
    <rotationAxis>
       <Point3D x="1.0" />
    </rotationAxis>
    <children>
-      <TabPane prefHeight="202.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TabPane prefHeight="202.0" prefWidth="900.0" style="-fx-position-shape: center;" tabClosingPolicy="UNAVAILABLE" tabMinWidth="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
-          <Tab text="Abrir">
+          <Tab text="Puertas">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TabPane layoutX="-7.0" layoutY="-54.0" prefHeight="167.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="70.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TabPane prefHeight="171.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <tabs>
-                            <Tab text="Ventanas">
+                            <Tab text="Habitacion Primaria">
                               <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
                                        <children>
-                                          <Pane layoutX="37.0" layoutY="59.0">
+                                          <Pane layoutX="288.0" layoutY="32.0">
                                              <children>
-                                                <Button layoutX="459.0" mnemonicParsing="false" onAction="#openDoorHabSeg" text="Habitacion 3" />
-                                                <Button layoutX="220.0" mnemonicParsing="false" onAction="#openWindowDerHabPrim" text="Habitacion 1" />
-                                                <Button layoutX="593.0" mnemonicParsing="false" onAction="#openDoorBanPri" prefWidth="83.0" text="Baño 1" />
-                                                <Button mnemonicParsing="false" onAction="#openDoorSala" prefWidth="83.0" text="Sala" />
-                                                <Button layoutX="107.0" mnemonicParsing="false" onAction="#openDoorCocina" prefWidth="83.0" text="Cocina" />
-                                                <Button layoutX="744.0" mnemonicParsing="false" onAction="#openDoorBanSec" prefWidth="83.0" text="Baño 2" />
-                                                <Button layoutX="334.0" mnemonicParsing="false" onAction="#openDoorHabPrimTra" text="Habitacion 2" />
+                                                <Button contentDisplay="TOP" layoutX="259.0" mnemonicParsing="false" onAction="#closeDoorHabPrim" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-cierra-puerta" text="Cerrar" />
+                                                <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#openDoorHabPrim" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-abre-puerta" text="Abrir" />
                                              </children>
                                           </Pane>
                                        </children>
                                     </AnchorPane>
                               </content>
                             </Tab>
-                            <Tab text="Puertas">
-                                 <content>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <Tab text="Habitacion Segundaria">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
                                        <children>
-                                          <Pane layoutX="25.0" layoutY="59.0">
+                                          <Pane layoutX="288.0" layoutY="32.0">
                                              <children>
-                                                <Button layoutX="459.0" mnemonicParsing="false" onAction="#openDoorHabSeg" text="Habitacion 3" />
-                                                <Button layoutX="220.0" mnemonicParsing="false" onAction="#openDoorHabPrim" text="Habitacion 1" />
-                                                <Button layoutX="593.0" mnemonicParsing="false" onAction="#openDoorBanPri" prefWidth="83.0" text="Baño 1" />
-                                                <Button mnemonicParsing="false" onAction="#openDoorSala" prefWidth="83.0" text="Sala" />
-                                                <Button layoutX="107.0" mnemonicParsing="false" onAction="#openDoorCocina" prefWidth="83.0" text="Cocina" />
-                                                <Button layoutX="744.0" mnemonicParsing="false" onAction="#openDoorBanSec" prefWidth="83.0" text="Baño 2" />
-                                                <Button layoutX="334.0" mnemonicParsing="false" onAction="#openDoorHabPrimTra" text="Habitacion 2" />
+                                                <Button contentDisplay="TOP" layoutX="259.0" mnemonicParsing="false" onAction="#closeDoorHabPrimTra" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-cierra-puerta" text="Cerrar" />
+                                                <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#openDoorHabPrimTra" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-abre-puerta" text="Abrir" />
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                              <Tab text="Habitacion Huesped">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                       <children>
+                                          <Pane layoutX="288.0" layoutY="32.0">
+                                             <children>
+                                                <Button contentDisplay="TOP" layoutX="259.0" mnemonicParsing="false" onAction="#closeDoorHabSec" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-cierra-puerta" text="Cerrar" />
+                                                <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#openDoorHabSec" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-abre-puerta" text="Abrir" />
                                              </children>
                                           </Pane>
                                        </children>
                                     </AnchorPane>
                                  </content>
-                            </Tab>
+                              </Tab>
+                              <Tab text="Sala">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                       <children>
+                                          <Pane layoutX="288.0" layoutY="32.0">
+                                             <children>
+                                                <Button contentDisplay="TOP" layoutX="259.0" mnemonicParsing="false" onAction="#closeDoorSala" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-cierra-puerta" text="Cerrar" />
+                                                <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#openDoorSala" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-abre-puerta" text="Abrir" />
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="Cocina">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                       <children>
+                                          <Pane layoutX="288.0" layoutY="32.0">
+                                             <children>
+                                                <Button contentDisplay="TOP" layoutX="259.0" mnemonicParsing="false" onAction="#closeDoorCocina" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-cierra-puerta" text="Cerrar" />
+                                                <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#openDoorCocina" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-abre-puerta" text="Abrir" />
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="Baño Principal">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                       <children>
+                                          <Pane layoutX="288.0" layoutY="32.0">
+                                             <children>
+                                                <Button contentDisplay="TOP" layoutX="259.0" mnemonicParsing="false" onAction="#closeDoorBanPrin" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-cierra-puerta" text="Cerrar" />
+                                                <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#openDoorBanPrin" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-abre-puerta" text="Abrir" />
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="Baño Segundario">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                       <children>
+                                          <Pane layoutX="288.0" layoutY="32.0">
+                                             <children>
+                                                <Button contentDisplay="TOP" layoutX="259.0" mnemonicParsing="false" onAction="#closeDoorBanSec" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-cierra-puerta" text="Cerrar" />
+                                                <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#openDoorBanSec" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-abre-puerta" text="Abrir" />
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
                           </tabs>
                         </TabPane>
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab text="Cerrar">
+          <Tab text="Ventanas">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="167.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <TabPane layoutX="-7.0" layoutY="-54.0" prefHeight="167.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="70.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <tabs>
-                                    <Tab text="Ventanas">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <TabPane prefHeight="171.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
+                           <tabs>
+                              <Tab text="Habitacion Primaria">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                       <children>
+                                          <Pane layoutX="289.0" layoutY="49.0">
                                              <children>
-                                                <TabPane prefHeight="134.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                   <tabs>
-                                                      <Tab text="Sala">
-                                                         <content>
-                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                         </content>
-                                                      </Tab>
-                                                      <Tab text="Comedor">
-                                                         <content>
-                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                         </content>
-                                                      </Tab>
-                                                      <Tab text="Habitacion Principal">
-                                                         <content>
-                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                         </content>
-                                                      </Tab>
-                                                      <Tab text="Habitacion Segundaria">
-                                                         <content>
-                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                         </content>
-                                                      </Tab>
-                                                      <Tab text="Habitacion Huespedes">
-                                                         <content>
-                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                         </content>
-                                                      </Tab>
-                                                      <Tab text="Cocina">
-                                                         <content>
-                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                         </content>
-                                                      </Tab>
-                                                      <Tab text="Baños">
-                                                         <content>
-                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                         </content>
-                                                      </Tab>
-                                                   </tabs>
-                                                </TabPane>
+                                                <Button contentDisplay="TOP" layoutX="256.0" mnemonicParsing="false" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-cierra-ventana" text="Cerrar" />
+                                                <Button contentDisplay="TOP" mnemonicParsing="false" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-abre-ventana" text="Abrir" />
                                              </children>
-                                          </AnchorPane>
-                                       </content>
-                                    </Tab>
-                                    <Tab text="Puertas">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                          </Pane>
+                                          <Text fill="WHITE" layoutX="335.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Habitacion Primaria">
+                                             <font>
+                                                <Font name="Calibri Light" size="29.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="Habitacion Segundaria">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                       <children>
+                                          <Pane layoutX="14.0" layoutY="49.0">
                                              <children>
-                                                <Pane layoutX="37.0" layoutY="59.0">
-                                                   <children>
-                                                      <Button layoutX="459.0" mnemonicParsing="false" onAction="#closeDoorHabSeg" text="Habitacion 3" />
-                                                      <Button layoutX="220.0" mnemonicParsing="false" onAction="#closeDoorHabPrim" text="Habitacion 1" />
-                                                      <Button layoutX="593.0" mnemonicParsing="false" onAction="#closeDoorBanPri" prefWidth="83.0" text="Baño 1" />
-                                                      <Button mnemonicParsing="false" onAction="#closeDoorSala" prefWidth="83.0" text="Sala" />
-                                                      <Button layoutX="107.0" mnemonicParsing="false" onAction="#closeDoorCocina" prefWidth="83.0" text="Cocina" />
-                                                      <Button layoutX="744.0" mnemonicParsing="false" onAction="#closeDoorBanSec" prefWidth="83.0" text="Baño 2" />
-                                                      <Button layoutX="334.0" mnemonicParsing="false" onAction="#closeDoorHabPrimTra" text="Habitacion 2" />
-                                                   </children>
-                                                </Pane>
+                                                <Button contentDisplay="TOP" layoutX="256.0" mnemonicParsing="false" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-cierra-ventana" text="Cerrar" />
+                                                <Button contentDisplay="TOP" mnemonicParsing="false" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-abre-ventana" text="Abrir" />
                                              </children>
-                                          </AnchorPane>
-                                       </content>
-                                    </Tab>
-                                 </tabs>
-                              </TabPane>
-                           </children>
-                        </AnchorPane>
+                                          </Pane>
+                                          <Pane layoutX="564.0" layoutY="49.0">
+                                             <children>
+                                                <Button contentDisplay="TOP" layoutX="256.0" mnemonicParsing="false" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-cierra-ventana" text="Cerrar" />
+                                                <Button contentDisplay="TOP" mnemonicParsing="false" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-abre-ventana" text="Abrir" />
+                                             </children>
+                                          </Pane>
+                                          <Text fill="WHITE" layoutX="319.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Habitacion Segundaria">
+                                             <font>
+                                                <Font name="Calibri Light" size="29.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="Habitacion Huesped">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                       <children>
+                                          <Pane layoutX="14.0" layoutY="49.0">
+                                             <children>
+                                                <Button contentDisplay="TOP" layoutX="256.0" mnemonicParsing="false" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-cierra-ventana" text="Cerrar" />
+                                                <Button contentDisplay="TOP" mnemonicParsing="false" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-abre-ventana" text="Abrir" />
+                                             </children>
+                                          </Pane>
+                                          <Pane layoutX="564.0" layoutY="49.0">
+                                             <children>
+                                                <Button contentDisplay="TOP" layoutX="256.0" mnemonicParsing="false" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-cierra-ventana" text="Cerrar" />
+                                                <Button contentDisplay="TOP" mnemonicParsing="false" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-abre-ventana" text="Abrir" />
+                                             </children>
+                                          </Pane>
+                                          <Text fill="WHITE" layoutX="335.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Habitacion Huesped">
+                                             <font>
+                                                <Font name="Calibri Light" size="29.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="Sala">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                       <children>
+                                          <Pane layoutX="14.0" layoutY="49.0">
+                                             <children>
+                                                <Button contentDisplay="TOP" layoutX="256.0" mnemonicParsing="false" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-cierra-ventana" text="Cerrar" />
+                                                <Button contentDisplay="TOP" mnemonicParsing="false" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-abre-ventana" text="Abrir" />
+                                             </children>
+                                          </Pane>
+                                          <Pane layoutX="564.0" layoutY="49.0">
+                                             <children>
+                                                <Button contentDisplay="TOP" layoutX="256.0" mnemonicParsing="false" styleClass="button-cierra-ventana" text="Cerrar" />
+                                                <Button contentDisplay="TOP" mnemonicParsing="false" styleClass="button-abre-ventana" text="Abrir" />
+                                             </children>
+                                          </Pane>
+                                          <Text fill="WHITE" layoutX="427.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sala">
+                                             <font>
+                                                <Font name="Calibri Light" size="29.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="Cocina">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                       <children>
+                                          <Pane layoutX="14.0" layoutY="49.0">
+                                             <children>
+                                                <Button contentDisplay="TOP" layoutX="161.0" mnemonicParsing="false" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-cierra-ventana" text="Cerrar" />
+                                                <Button contentDisplay="TOP" mnemonicParsing="false" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-abre-ventana" text="Abrir" />
+                                                <Text fill="WHITE" layoutX="107.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </Pane>
+                                          <Pane layoutX="659.0" layoutY="49.0">
+                                             <children>
+                                                <Button contentDisplay="TOP" layoutX="161.0" mnemonicParsing="false" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-cierra-ventana" text="Cerrar" />
+                                                <Button contentDisplay="TOP" mnemonicParsing="false" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-abre-ventana" text="Abrir" />
+                                                <Text fill="WHITE" layoutX="106.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </Pane>
+                                          <Pane layoutX="337.0" layoutY="49.0">
+                                             <children>
+                                                <Button contentDisplay="TOP" layoutX="161.0" mnemonicParsing="false" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-cierra-ventana" text="Cerrar" />
+                                                <Button contentDisplay="TOP" mnemonicParsing="false" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-abre-ventana" text="Abrir" />
+                                                <Text fill="WHITE" layoutX="106.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </Pane>
+                                          <Text fill="WHITE" layoutX="411.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cocina">
+                                             <font>
+                                                <Font name="Calibri Light" size="29.0" />
+                                             </font>
+                                          </Text>
+                                          <Line endX="70.0" endY="119.0" layoutX="229.0" layoutY="26.0" startX="70.0" startY="-25.0" stroke="WHITE" strokeLineJoin="BEVEL" />
+                                          <Line endX="70.0" endY="119.0" layoutX="543.0" layoutY="24.0" startX="70.0" startY="-25.0" stroke="WHITE" strokeLineJoin="BEVEL" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                           </tabs>
+                        </TabPane>
                      </children></AnchorPane>
             </content>
           </Tab>
             <Tab text="Modificar">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
-            </Tab>
-            <Tab text="Estado">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
               </content>

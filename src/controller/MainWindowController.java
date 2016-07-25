@@ -8,6 +8,8 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import static javafx.animation.Animation.INDEFINITE;
+import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +20,7 @@ import javafx.scene.input.PickResult;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -32,7 +35,13 @@ public class MainWindowController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        root.setRotate(root.getRotate()+180);
+        RotateTransition rt = new RotateTransition();
+        rt.setNode(root);
+        rt.setByAngle(720);
+        rt.setCycleCount(INDEFINITE);
+        rt.setDuration(Duration.seconds(50));
+        rt.play();
+        
     }
     
     public void closeDoor(Node n){

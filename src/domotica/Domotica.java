@@ -62,32 +62,14 @@ public class Domotica extends Application {
         stage2.setController(stage1);
     
     // init TAD Data
-    System.out.println(homeLoad.toString());
-        initD(homeLoad);
-        
-        
-    
+        initD(homeLoad);    
     stage2.setCasa(home);
     Scene scene = new Scene(root,900,700,true,SceneAntialiasing.BALANCED);
     scene.setCamera(addCamera());
-    
-    scene.setOnKeyPressed(evt ->{
-        if(evt.getCode() == KeyCode.D)
-            homeLoad.setTranslateY(homeLoad.getTranslateY()+10);
-        if(evt.getCode() == KeyCode.C)
-            homeLoad.setTranslateY(homeLoad.getTranslateY()-10);
-        if(evt.getCode() == KeyCode.X)
-            homeLoad.setTranslateX(homeLoad.getTranslateX()+10);
-        if(evt.getCode() == KeyCode.S)
-            homeLoad.setTranslateX(homeLoad.getTranslateX()-10);
-        if(evt.getCode() == KeyCode.A)
-            homeLoad.setTranslateZ(homeLoad.getTranslateZ()+10);
-        if(evt.getCode() == KeyCode.Z)
-            homeLoad.setTranslateZ(homeLoad.getTranslateZ()-10);
-    });
-    
     stage.setScene(scene);
     stage.setTitle("JavaFX 3D");
+    stage.setX(0);
+    stage.setY(0);
     stage.show();
     }
     
@@ -109,8 +91,7 @@ public class Domotica extends Application {
         cam.setNearClip(0.01);
         cam.getTransforms().addAll(new Rotate(60,Rotate.X_AXIS),new Translate(-200,-200,300));
         return cam;
-    }
-    
+    }    
     
     public void initD(Group root){
         ///// Datos Habitacion Primaria

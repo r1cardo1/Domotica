@@ -7,10 +7,14 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
 import tad.Casa;
 
 /**
@@ -69,12 +73,12 @@ public class ControlsController implements Initializable {
     }
     
     @FXML
-    public void openDoorHabSeg(ActionEvent evt){
+    public void openDoorHabSec(ActionEvent evt){
         home.getHabTraseraSec().getPuerta().abrePuerta();
     }
     
     @FXML
-    public void openDoorBanPri(ActionEvent evt){
+    public void openDoorBanPrin(ActionEvent evt){
         home.getBanPrincipal().getPuerta().abrePuerta();
     }
     
@@ -104,12 +108,12 @@ public class ControlsController implements Initializable {
     }
     
     @FXML
-    public void closeDoorHabSeg(ActionEvent evt){
+    public void closeDoorHabSec(ActionEvent evt){
         home.getHabTraseraSec().getPuerta().cierraPuerta();
     }
     
     @FXML
-    public void closeDoorBanPri(ActionEvent evt){
+    public void closeDoorBanPrin(ActionEvent evt){
         home.getBanPrincipal().getPuerta().cierraPuerta();
     }
     
@@ -178,7 +182,65 @@ public class ControlsController implements Initializable {
         home.getHabTraseraPrim().getVentana2().cierraVentanaDer();
     }
     
-  
+    @FXML
+    public void openWindowDerHabSec1(ActionEvent evt){
+        home.getHabTraseraSec().getVentana1().abreVentanaDer();
+    }
+    
+    @FXML
+    public void openWindowIzqHabSec1(ActionEvent evt){
+        home.getHabTraseraSec().getVentana1().abreVentanaIzq();
+    }
+    
+    @FXML
+    public void openWindowDerHabSec2(ActionEvent evt){
+        home.getHabTraseraSec().getVentana2().abreVentanaDer();
+    }
+    
+    @FXML
+    public void openWindowIzqHabSec2(ActionEvent evt){
+        home.getHabTraseraSec().getVentana2().abreVentanaIzq();
+    }
+    
+    @FXML
+    public void closeWindowDerHabSec1(ActionEvent evt){
+        home.getHabTraseraSec().getVentana1().cierraVentanaDer();
+    }
+    
+    @FXML
+    public void closeWindowIzqHabSec1(ActionEvent evt){
+        home.getHabTraseraSec().getVentana1().cierraVentanaIzq();
+    }
+    
+    @FXML
+    public void closeWindowDerHabSec2(ActionEvent evt){
+        home.getHabTraseraSec().getVentana2().cierraVentanaDer();
+    }
+    
+    @FXML
+    public void closeWindowIzqHabSec2(ActionEvent evt){
+        home.getHabTraseraSec().getVentana2().cierraVentanaIzq();
+    }   
+    
+    @FXML
+    public void focusIn(MouseEvent evt){
+        ScaleTransition st = new ScaleTransition();
+        st.setNode((Node) evt.getSource());
+        st.setByX(0.2);
+        st.setByY(0.2);
+        st.setDuration(Duration.millis(50));
+        st.play();        
+    }
+    
+    @FXML
+    public void focusOut(MouseEvent evt){
+        ScaleTransition st = new ScaleTransition();
+        st.setNode((Node) evt.getSource());
+        st.setByX(-0.2);
+        st.setByY(-0.2);
+        st.setDuration(Duration.millis(50));
+        st.play(); 
+    }
     public void setCasa(Casa c){
         this.home = c;
     }

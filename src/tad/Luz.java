@@ -6,6 +6,7 @@
 package tad;
 
 import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
 
 /**
@@ -22,10 +23,22 @@ public class Luz {
         this.intensidad = intensidad;
         this.color = color;
         this.luz = luz;
+        PhongMaterial mat = new PhongMaterial(Color.LIGHTSLATEGRAY);
+        luz.setMaterial(mat);
     }
 
     public void cambiaColor(){
         
+    }
+    
+    public void enciendeLuz(){
+        PhongMaterial mat = new PhongMaterial(this.color);
+        this.luz.setMaterial(mat);
+    }
+    
+    public void apagaLuz(){
+        PhongMaterial mat = new PhongMaterial(Color.LIGHTSLATEGRAY);
+        luz.setMaterial(mat);
     }
     
     

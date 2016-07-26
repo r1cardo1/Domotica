@@ -36,4 +36,50 @@
     -fx-graphic: url("closeWindow.png");        
 }
 
+.button-abre-ventana-izquierda{
+    -fx-border-color: white;
+    -fx-border-radius:10 0 0 10;
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-graphic: url("openleft.png");  
+}
 
+.button-abre-ventana-derecha{
+    -fx-border-color: white;
+    -fx-border-radius:0 10 10 0;
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-graphic: url("openright.png");  
+}
+
+.button-enciende-luz{
+    -fx-graphic:url("lightOn.png");
+    -fx-background-color:transparent;
+    -fx-border-color:white;
+    -fx-border-radius:10px;
+    -fx-text-fill:white;
+}
+
+.button-enciende-luz:hover{
+    -fx-graphic:url("lightOn.png");
+    -fx-background-color:transparent;
+    -fx-border-color:green;
+    -fx-border-radius:10px;
+    -fx-text-fill:white;
+}
+
+.button-apaga-luz{
+    -fx-graphic:url("lightOff.png");
+    -fx-background-color:transparent;
+    -fx-border-color:white;
+    -fx-border-radius:10px;
+    -fx-text-fill:white;
+}
+
+.button-apaga-luz:hover{
+    -fx-graphic:url("lightOff.png");
+    -fx-background-color:transparent;
+    -fx-border-color:red;
+    -fx-border-radius:10px;
+    -fx-text-fill:white;
+}

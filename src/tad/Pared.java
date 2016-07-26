@@ -6,6 +6,7 @@
 package tad;
 
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.DrawMode;
 import javafx.scene.shape.MeshView;
@@ -13,13 +14,11 @@ import javafx.scene.shape.MeshView;
 
 public class Pared {
     private double alto;
-    private String material;
-    private String pintura;
+    private Color pintura;
     private MeshView pared;
 
-    public Pared(double alto, String material, String pintura,MeshView pared) {
+    public Pared(double alto, Color pintura,MeshView pared) {
         this.alto = alto;
-        this.material = material;
         this.pintura = pintura;
         this.pared = pared;
         PhongMaterial phongMaterial = new PhongMaterial();
@@ -33,11 +32,8 @@ public class Pared {
         return alto;
     }
 
-    public String getMaterial() {
-        return material;
-    }
 
-    public String getPintura() {
+    public Color getPintura() {
         return pintura;
     }
 
@@ -45,11 +41,9 @@ public class Pared {
         this.alto = alto;
     }
 
-    public void setMaterial(String material) {
-        this.material = material;
-    }
 
-    public void setPintura(String pintura) {
+
+    public void setPintura(Color pintura) {
         this.pintura = pintura;
     }
         

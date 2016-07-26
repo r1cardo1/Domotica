@@ -108,7 +108,7 @@ public class Domotica extends Application {
         ///// Datos tercera habitacion
         home.setHabTraseraSec(new Habitacion(new Puerta(1.9,0.80,"Madera",findMesh(root,"_ncl1_19")),
                 new Ventana(1.0,1.5,"Cristal",findMesh(root,"_ncl1_18"),findMesh(root,"_ncl1_15")),
-                new Ventana(1.0,1.5,"Cristal",findMesh(root,"_ncl1_12"),findMesh(root,"_ncl1_14")),
+                new Ventana(1.0,1.5,"Cristal",findMesh(root,"_ncl1_14"),findMesh(root,"_ncl1_12")),
                 new Luz(1.0,Color.WHITE,findMesh(root,"_ncl1_34"))));
         
         ///// Datos Sala
@@ -120,9 +120,9 @@ public class Domotica extends Application {
         ///// Datos Cocina
         home.setCocina(new Cocina(new Luz(1.0,Color.WHITE,findMesh(root,"_ncl1_31")),
                 new Luz(1.0,Color.WHITE,findMesh(root,"_ncl1_33")),
-                new Ventana(1.0,1.5,"Cristal",findMesh(root,"_ncl1_6"),findMesh(root,"_ncl1_7")),
-                new Ventana(1.0,1.5,"Cristal",findMesh(root,"_ncl1_9"),findMesh(root,"_ncl1_10")),
-                new Ventana(1.0,1.5,"Cristal",findMesh(root,"_ncl1_3"),findMesh(root,"_ncl1_5")),
+                new Ventana(1.0,1.5,"Cristal",findMesh(root,"_ncl1_7"),findMesh(root,"_ncl1_6")),
+                new Ventana(1.0,1.5,"Cristal",findMesh(root,"_ncl1_10"),findMesh(root,"_ncl1_9")),
+                new Ventana(1.0,1.5,"Cristal",findMesh(root,"_ncl1_5"),findMesh(root,"_ncl1_3")),
                 new Puerta(1.9,0.80,"Madera",findMesh(root,"_ncl1_20"))));
         
         ///// Datos baño principal
@@ -132,6 +132,9 @@ public class Domotica extends Application {
         ///// Datos baño segundario
         home.setBanSegundario(new Bano(new Luz(1.0,Color.WHITE,findMesh(root,"_ncl1_35")),
                 new Puerta(1.9,0.80,"Madera",findMesh(root,"_ncl1_21"))));
+        
+        ///// Datos de paredes
+        home.setParedes(new Pared(1.80,Color.CORAL,findMesh(root,"_ncl1_29")));
     }
     
     public MeshView findMesh(Group root,String mesh){

@@ -5,12 +5,17 @@
  */
 package tad;
 
+import java.util.Random;
 import javafx.animation.RotateTransition;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.DrawMode;
 import javafx.scene.shape.MeshView;
+import javafx.scene.shape.TriangleMesh;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 import javafx.util.Duration;
@@ -33,10 +38,10 @@ public class Puerta {
         this.material = material;
         this.model = model;
         abierta = false;
-        PhongMaterial phongMaterial = new PhongMaterial();
-        phongMaterial.setDiffuseMap(new Image(getClass().getResource("/images/puerta.jpg").toExternalForm()));
+        TriangleMesh mesh = (TriangleMesh) model.getMesh();
+        System.out.println(mesh.getTexCoordElementSize()+" "+model.getId());
+        PhongMaterial phongMaterial = new PhongMaterial(Color.BURLYWOOD);
         model.setMaterial(phongMaterial);
-        
         if(model.getLayoutBounds().getDepth()<10)
             movePivot(model,12,12);
         else
@@ -117,6 +122,28 @@ public class Puerta {
     
     public void cambiaMaterial(){
         
+    }
+    
+     public Image createImage( double size) {
+
+        Random rnd = new Random();
+
+        int width = (int) size;
+        int height = (int) size;
+
+        WritableImage wr = new WritableImage(width, height);
+        PixelWriter pw = wr.getPixelWriter();
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+
+                Color color = Color.rgb(rnd.nextInt( 256), rnd.nextInt( 256), rnd.nextInt( 256));
+                pw.setColor(x, y, color);
+
+            }
+        }
+
+        return wr;
+
     }
     
     public void cambiaModelo(){

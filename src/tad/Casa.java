@@ -6,7 +6,6 @@
  */
 package tad;
 
-import java.util.ArrayList;
 import javafx.scene.Group;
 
 /**
@@ -22,6 +21,9 @@ public class Casa {
     private Habitacion habTraseraSec;
     private Cocina cocina;
     private Sala lobby;
+    private Pared paredes;
+
+
     private Group casa;
 
     public void setCasa(Group casa) {
@@ -75,6 +77,14 @@ public class Casa {
         return lobby;
     }
 
+        public Pared getParedes() {
+        return paredes;
+    }
+
+    public void setParedes(Pared paredes) {
+        this.paredes = paredes;
+    }
+    
     public void setBanPrincipal(Bano banPrincipal) {
         this.banPrincipal = banPrincipal;
     }

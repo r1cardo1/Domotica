@@ -6,6 +6,9 @@
 package tad;
 
 import javafx.animation.TranslateTransition;
+import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.MeshView;
 
 /**
@@ -29,6 +32,9 @@ public class Ventana {
         this.solDer = solDer;
         this.abiertaIzq = false;
         this.abiertaDer = false;
+        PhongMaterial phongMaterial = new PhongMaterial(Color.LIGHTSKYBLUE);
+        solIzq.setMaterial(phongMaterial);
+        solDer.setMaterial(phongMaterial);
     }
 
     public double getAlto() {

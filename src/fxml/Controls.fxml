@@ -574,7 +574,49 @@
                                               </Tab>
                                               <Tab text="Modificar Color">
                                                 <content>
-                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                                         <children>
+                                                            <TabPane prefHeight="113.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
+                                                               <tabs>
+                                                                  <Tab text="Habitacion 1">
+                                                                     <content>
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                     </content>
+                                                                  </Tab>
+                                                                  <Tab text="Habitacion 2">
+                                                                     <content>
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                     </content>
+                                                                  </Tab>
+                                                                  <Tab text="Habitacion 3">
+                                                                     <content>
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                     </content>
+                                                                  </Tab>
+                                                                  <Tab text="Sala">
+                                                                     <content>
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                     </content>
+                                                                  </Tab>
+                                                                  <Tab text="Cocina">
+                                                                     <content>
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                     </content>
+                                                                  </Tab>
+                                                                  <Tab text="Baño 1">
+                                                                     <content>
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                     </content>
+                                                                  </Tab>
+                                                                  <Tab text="Baño 2">
+                                                                     <content>
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                     </content>
+                                                                  </Tab>
+                                                               </tabs>
+                                                            </TabPane>
+                                                         </children>
+                                                      </AnchorPane>
                                                 </content>
                                               </Tab>
                                             </tabs>
@@ -591,7 +633,16 @@
                                             <tabs>
                                               <Tab text="Operar">
                                                 <content>
-                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                                         <children>
+                                                            <Pane layoutX="330.0" layoutY="17.0">
+                                                               <children>
+                                                                  <Button contentDisplay="TOP" mnemonicParsing="false" styleClass="button-abre-puerta" text="Abrir Todas" />
+                                                                  <Button contentDisplay="TOP" layoutX="154.0" mnemonicParsing="false" styleClass="button-cierra-puerta" text="Cerrar Todas" />
+                                                               </children>
+                                                            </Pane>
+                                                         </children>
+                                                      </AnchorPane>
                                                 </content>
                                               </Tab>
                                               <Tab text="Modificar Color">

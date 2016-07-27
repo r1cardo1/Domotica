@@ -19,7 +19,7 @@
 <?import javafx.scene.transform.Affine?>
 <?import javafx.scene.transform.Rotate?>
 
-<Group id="AddedRootGroup_zUp" fx:id="root" onMouseClicked="#mouse" translateX="300.0" translateY="300.0" translateZ="150.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
+<Group id="AddedRootGroup_zUp" fx:id="root" onMouseClicked="#mouse" translateX="350.0" translateY="300.0" translateZ="160.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
   <transforms>
     <Rotate angle="-90.0" pivotX="0.0" pivotY="0.0" pivotZ="0.0">
       <axis>

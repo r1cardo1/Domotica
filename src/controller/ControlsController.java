@@ -5,6 +5,7 @@
  */
 package controller;
 
+import fxml.StatusController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.ScaleTransition;
@@ -14,7 +15,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import tad.Casa;
 
@@ -29,10 +34,15 @@ public class ControlsController implements Initializable {
     private Casa home;
     private Group root;
     private MainWindowController controller;
+    StatusController stats;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+    }
+    
+    public void setStats(StatusController s){
+        this.stats = s;
     }
     
     public void setController(MainWindowController c){
@@ -56,71 +66,85 @@ public class ControlsController implements Initializable {
     @FXML
     public void openDoorCocina(ActionEvent evt){
         home.getCocina().getPuerta().abrePuerta();
+        setError(stats.getPcocina(),"Abierta");
     }
     
     @FXML
     public void openDoorSala(ActionEvent evt){
         home.getLobby().getPuerta().abrePuerta();
+        setError(stats.getPsala(),"Abierta");
     }
         
     @FXML
     public void openDoorHabPrim(ActionEvent evt){
         home.getHabPrimaria().getPuerta().abrePuerta();
+        setError(stats.getPhab1(),"Abierta");
     }
     
     @FXML
     public void openDoorHabPrimTra(ActionEvent evt){
         home.getHabTraseraPrim().getPuerta().abrePuerta();
+        setError(stats.getPhab2(),"Abierta");
     }
     
     @FXML
     public void openDoorHabSec(ActionEvent evt){
         home.getHabTraseraSec().getPuerta().abrePuerta();
+        setError(stats.getPhab3(),"Abierta");
     }
     
     @FXML
     public void openDoorBanPrin(ActionEvent evt){
         home.getBanPrincipal().getPuerta().abrePuerta();
+        setError(stats.getPbanprin(),"Abierta");
     }
     
     @FXML
     public void openDoorBanSec(ActionEvent evt){
         home.getBanSegundario().getPuerta().abrePuerta();
+        setError(stats.getPbanseg(),"Abierta");
     }
     
     @FXML
     public void closeDoorCocina(ActionEvent evt){
         home.getCocina().getPuerta().cierraPuerta();
+        setCheck(stats.getPcocina(),"Cerrada");
     }
     
     @FXML
     public void closeDoorSala(ActionEvent evt){
         home.getLobby().getPuerta().cierraPuerta();
+        setCheck(stats.getPsala(),"Cerrada");
     }
     
     @FXML
     public void closeDoorHabPrim(ActionEvent evt){
         home.getHabPrimaria().getPuerta().cierraPuerta();
+        setCheck(stats.getPhab1(),"Cerrada");
     }
 
     @FXML
     public void closeDoorHabPrimTra(ActionEvent evt){
         home.getHabTraseraPrim().getPuerta().cierraPuerta();
+        setCheck(stats.getPhab2(),"Cerrada");
     }
     
     @FXML
     public void closeDoorHabSec(ActionEvent evt){
         home.getHabTraseraSec().getPuerta().cierraPuerta();
+        setCheck(stats.getPhab3(),"Cerrada");
     }
     
     @FXML
     public void closeDoorBanPrin(ActionEvent evt){
         home.getBanPrincipal().getPuerta().cierraPuerta();
+        setCheck(stats.getPbanprin(),"Cerrada");
     }
     
     @FXML
     public void closeDoorBanSec(ActionEvent evt){
         home.getBanSegundario().getPuerta().cierraPuerta();
+        setCheck(stats.getPbanseg(),"Cerrada");
     }
     
     @FXML
@@ -347,6 +371,18 @@ public class ControlsController implements Initializable {
         st.setToY(1);
         st.setDuration(Duration.millis(50));
         st.play(); 
+    }
+    
+    public void setCheck(Label txt,String s){
+        txt.setGraphic(new ImageView(new Image(getClass().getResource("/images/check.png").toExternalForm())));
+        txt.setTextFill(Color.GREEN);
+        txt.setText(s);
+    }
+    
+    public void setError(Label txt,String s){
+        txt.setGraphic(new ImageView(new Image(getClass().getResource("/images/error.png").toExternalForm())));
+        txt.setTextFill(Color.RED);
+        txt.setText(s);
     }
     
     public void setCasa(Casa c){

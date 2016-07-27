@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="900.0" rotate="60.0" stylesheets="@../css/tabPane.css" translateX="-202.0" translateY="-410.0" translateZ="63.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControlsController">
+<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="900.0" stylesheets="@../css/tabPane.css" translateX="-202.0" translateY="-410.0" translateZ="63.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControlsController">
    <rotationAxis>
       <Point3D x="1.0" />
    </rotationAxis>
@@ -453,7 +453,226 @@
             </Tab>
             <Tab text="Administrar">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TabPane prefHeight="171.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <tabs>
+                            <Tab text="Usuarios">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TabPane prefHeight="142.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <tabs>
+                                              <Tab text="Añadir">
+                                                <content>
+                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                                         <children>
+                                                            <Text fill="WHITE" layoutX="21.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
+                                                            <TextField layoutX="81.0" layoutY="16.0" />
+                                                            <TextField layoutX="81.0" layoutY="44.0" />
+                                                            <Text fill="WHITE" layoutX="21.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido" />
+                                                            <Text fill="WHITE" layoutX="21.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clave" />
+                                                            <PasswordField layoutX="81.0" layoutY="72.0" />
+                                                            <Text fill="WHITE" layoutX="270.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirme clave" />
+                                                            <PasswordField layoutX="358.0" layoutY="16.0" />
+                                                            <Text fill="WHITE" layoutX="270.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo de usuario" />
+                                                            <ComboBox layoutX="358.0" layoutY="44.0" prefWidth="150.0" />
+                                                            <CheckBox layoutX="574.0" layoutY="20.0" mnemonicParsing="false" text="Habitacion 1" textFill="WHITE" />
+                                                            <CheckBox layoutX="574.0" layoutY="40.0" mnemonicParsing="false" text="Habitacion 2" textFill="WHITE" />
+                                                            <CheckBox layoutX="574.0" layoutY="59.0" mnemonicParsing="false" text="Habitacion 3" textFill="WHITE" />
+                                                            <CheckBox layoutX="574.0" layoutY="78.0" mnemonicParsing="false" text="Baño Principal" textFill="WHITE" />
+                                                            <CheckBox layoutX="696.0" layoutY="20.0" mnemonicParsing="false" text="Baño Segundario" textFill="WHITE" />
+                                                            <CheckBox layoutX="696.0" layoutY="40.0" mnemonicParsing="false" text="Sala" textFill="WHITE" />
+                                                            <Button layoutX="764.0" layoutY="72.0" mnemonicParsing="false" text="Crear Usuario" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                </content>
+                                              </Tab>
+                                              <Tab text="Eliminar">
+                                                <content>
+                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                                         <children>
+                                                            <ScrollPane layoutY="-1.0" prefHeight="113.0" prefWidth="517.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="383.0" AnchorPane.topAnchor="0.0">
+                                                               <content>
+                                                                  <TableView prefHeight="200.0" prefWidth="509.0">
+                                                                    <columns>
+                                                                      <TableColumn prefWidth="238.0" text="C1" />
+                                                                      <TableColumn prefWidth="238.0" text="C2" />
+                                                                    </columns>
+                                                                  </TableView>
+                                                               </content>
+                                                            </ScrollPane>
+                                                            <Button layoutX="685.0" layoutY="44.0" mnemonicParsing="false" text="Eliminar" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                </content>
+                                              </Tab>
+                                                <Tab text="Modificar">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                                         <children>
+                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="113.0" prefWidth="900.0" styleClass="fondotab" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                               <children>
+                                                                  <Text fill="WHITE" layoutX="21.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
+                                                                  <TextField layoutX="81.0" layoutY="16.0" />
+                                                                  <TextField layoutX="81.0" layoutY="44.0" />
+                                                                  <Text fill="WHITE" layoutX="21.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido" />
+                                                                  <Text fill="WHITE" layoutX="21.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clave" />
+                                                                  <PasswordField layoutX="81.0" layoutY="72.0" />
+                                                                  <Text fill="WHITE" layoutX="270.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirme clave" />
+                                                                  <PasswordField layoutX="358.0" layoutY="16.0" />
+                                                                  <Text fill="WHITE" layoutX="270.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo de usuario" />
+                                                                  <ComboBox layoutX="358.0" layoutY="44.0" prefWidth="150.0" />
+                                                                  <CheckBox layoutX="265.0" layoutY="70.0" mnemonicParsing="false" text="Habitacion 1" textFill="WHITE" />
+                                                                  <CheckBox layoutX="265.0" layoutY="89.0" mnemonicParsing="false" text="Habitacion 2" textFill="WHITE" />
+                                                                  <CheckBox layoutX="358.0" layoutY="70.0" mnemonicParsing="false" text="Habitacion 3" textFill="WHITE" />
+                                                                  <CheckBox layoutX="358.0" layoutY="89.0" mnemonicParsing="false" text="Baño Principal" textFill="WHITE" />
+                                                                  <CheckBox layoutX="455.0" layoutY="70.0" mnemonicParsing="false" text="Baño Segundario" textFill="WHITE" />
+                                                                  <CheckBox layoutX="455.0" layoutY="89.0" mnemonicParsing="false" text="Sala" textFill="WHITE" />
+                                                                  <Button layoutX="819.0" layoutY="77.0" mnemonicParsing="false" text="Modificar" />
+                                                                  <ScrollPane layoutX="567.0" layoutY="-1.0" prefHeight="114.0" prefWidth="200.0">
+                                                                     <content>
+                                                                        <TableView prefHeight="200.0" prefWidth="197.0">
+                                                                          <columns>
+                                                                            <TableColumn editable="false" prefWidth="94.0" text="Nombre" />
+                                                                            <TableColumn editable="false" prefWidth="91.0" text="Apellido" />
+                                                                          </columns>
+                                                                        </TableView>
+                                                                     </content>
+                                                                  </ScrollPane>
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </content>
+                                                </Tab>
+                                            </tabs>
+                                          </TabPane>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab text="Ventanas">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TabPane prefHeight="142.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <tabs>
+                                              <Tab text="Operar">
+                                                <content>
+                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                                         <children>
+                                                            <Pane layoutX="330.0" layoutY="17.0">
+                                                               <children>
+                                                                  <Button contentDisplay="TOP" mnemonicParsing="false" styleClass="button-abre-ventana" text="Abrir Todas" />
+                                                                  <Button contentDisplay="TOP" layoutX="154.0" mnemonicParsing="false" styleClass="button-cierra-ventana" text="Cerrar Todas" />
+                                                               </children>
+                                                            </Pane>
+                                                         </children>
+                                                      </AnchorPane>
+                                                </content>
+                                              </Tab>
+                                              <Tab text="Modificar Color">
+                                                <content>
+                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                </content>
+                                              </Tab>
+                                            </tabs>
+                                          </TabPane>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                              <Tab text="Puertas">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TabPane prefHeight="142.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <tabs>
+                                              <Tab text="Operar">
+                                                <content>
+                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                </content>
+                                              </Tab>
+                                              <Tab text="Modificar Color">
+                                                <content>
+                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <TabPane prefHeight="113.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                              <tabs>
+                                                                <Tab text="Habitacion 1">
+                                                                  <content>
+                                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                  </content>
+                                                                </Tab>
+                                                                <Tab text="Habitacion 2">
+                                                                  <content>
+                                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                  </content>
+                                                                </Tab>
+                                                                  <Tab text="Habitacion 3">
+                                                                     <content>
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                     </content>
+                                                                  </Tab>
+                                                                  <Tab text="Sala">
+                                                                     <content>
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                     </content>
+                                                                  </Tab>
+                                                                  <Tab text="Cocina">
+                                                                     <content>
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                     </content>
+                                                                  </Tab>
+                                                                  <Tab text="Baño 1">
+                                                                     <content>
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                     </content>
+                                                                  </Tab>
+                                                                  <Tab text="Baño 2">
+                                                                     <content>
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                     </content>
+                                                                  </Tab>
+                                                              </tabs>
+                                                            </TabPane>
+                                                         </children>
+                                                      </AnchorPane>
+                                                </content>
+                                              </Tab>
+                                            </tabs>
+                                          </TabPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="Historial de eventos">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <ScrollPane prefHeight="142.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="898.0">
+                                                   <children>
+                                                      <TableView prefHeight="200.0" prefWidth="898.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                        <columns>
+                                                          <TableColumn prefWidth="108.0" text="Hora" />
+                                                          <TableColumn prefWidth="359.0" text="Usuario" />
+                                                            <TableColumn prefWidth="430.0" text="Tipo de evento" />
+                                                        </columns>
+                                                      </TableView>
+                                                   </children>
+                                                </AnchorPane>
+                                            </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
+                     </children></AnchorPane>
               </content>
             </Tab>
         </tabs>

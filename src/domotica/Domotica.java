@@ -2,11 +2,7 @@ package domotica;
 
 import controller.ControlsController;
 import controller.MainWindowController;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -15,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.SceneAntialiasing;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
@@ -49,29 +46,72 @@ public class Domotica extends Application {
     // Load control panel
     
     FXMLLoader loaderPanel = new FXMLLoader(getClass().getResource("/fxml/Controls.fxml"));
+    
+    // Load Stats panel
+    
+    FXMLLoader loaderStats = new FXMLLoader(getClass().getResource("/fxml/Status.fxml"));
 
     // Add both to scene
+    AnchorPane statsPne = loaderStats.load();
     Group homeLoad = loaderHome.load();
     root.getChildren().add(loaderPanel.load());
     root.getChildren().add(homeLoad);
-    
+    root.getChildren().add(statsPne);
+        
     // Get ready controllers
     
         stage1 = loaderHome.getController();
         stage2 = loaderPanel.getController();
-        stage2.setController(stage1);
+        stage2.setController(stage1);  
+        stage2.setStats(loaderStats.getController());
     
     // init TAD Data
         initD(homeLoad);    
     stage2.setCasa(home);
-    Scene scene = new Scene(root,900,700,true,SceneAntialiasing.BALANCED);
+    Scene scene = new Scene(root,1300,700,true,SceneAntialiasing.BALANCED);
     scene.setCamera(addCamera());
+    
+    scene.setOnKeyPressed(evt ->{
+    if(evt.getCode() == KeyCode.A){
+        
+        statsPne.setTranslateX(statsPne.getTranslateX()-5);
+        System.out.println(statsPne.getTranslateX());
+        
+    }
+    if(evt.getCode() == KeyCode.D){
+        statsPne.setTranslateX(statsPne.getTranslateX()+5);
+        System.out.println(statsPne.getTranslateX());
+    }
+    if(evt.getCode() == KeyCode.W){
+        statsPne.setTranslateY(statsPne.getTranslateY()+5);
+        System.out.println(statsPne.getTranslateY());
+    }
+    if(evt.getCode() == KeyCode.S){
+        statsPne.setTranslateY(statsPne.getTranslateY()-5);
+        System.out.println(statsPne.getTranslateY());
+    }
+    if(evt.getCode() == KeyCode.R){
+        statsPne.setTranslateZ(statsPne.getTranslateZ()+5);
+        System.out.println(statsPne.getTranslateZ());
+    }
+    if(evt.getCode() == KeyCode.F){
+        statsPne.setTranslateZ(statsPne.getTranslateZ()-5);
+        System.out.println(statsPne.getTranslateZ());
+    }
+    
+    });
     stage.setScene(scene);
     stage.setTitle("JavaFX 3D");
     stage.setX(0);
     stage.setY(0);
     stage.show();
+    
+    
+    
+    
     }
+    
+    
     
     public void addFloor(Group root){
         final Box floor = new Box(1000, 500, 1);

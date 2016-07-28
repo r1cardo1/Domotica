@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="300.0" styleClass="background-Stats" stylesheets="@../css/tabPane.css" translateX="633.0" translateZ="27.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.StatusController">
+<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="300.0" rotate="60.0" styleClass="background-Stats" stylesheets="@../css/tabPane.css" translateX="633.0" translateZ="27.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.StatusController">
    <rotationAxis>
       <Point3D x="1.0" />
    </rotationAxis>

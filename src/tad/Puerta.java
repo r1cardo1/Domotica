@@ -5,17 +5,11 @@
  */
 package tad;
 
-import java.util.Random;
 import javafx.animation.RotateTransition;
 import javafx.scene.Node;
-import javafx.scene.image.Image;
-import javafx.scene.image.PixelWriter;
-import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
-import javafx.scene.shape.DrawMode;
 import javafx.scene.shape.MeshView;
-import javafx.scene.shape.TriangleMesh;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 import javafx.util.Duration;
@@ -33,6 +27,13 @@ public class Puerta {
     private MeshView model;
     private Color color;
 
+    /**
+     * Crea una nueva instancia de la clase Puerta
+     * @param alto Es el alto de la puerta
+     * @param ancho Es el ancho de la puerta
+     * @param material Es el color de la puerta
+     * @param model Es la referencia al modelo 3D de la puerta
+     */
     public Puerta(double alto, double ancho, String material, MeshView model) {
         this.alto = alto;
         this.ancho = ancho;
@@ -47,26 +48,50 @@ public class Puerta {
             movePivot(model,12,12,true);
     }
 
+    /**
+     * Retorna el alto de la puerta
+     * @return Double
+     */
     public double getAlto() {
         return alto;
     }
 
+    /**
+     * Retorna el ancho de la puerta
+     * @return Double
+     */
     public double getAncho() {
         return ancho;
     }
 
+    /**
+     * Retorna el materia de la puerta
+     * @return String
+     */
     public String getMaterial() {
         return material;
     }
 
+    /**
+     * Retorna TRUE si la puerta esta abierta y FALSE si esta cerrada
+     * @return Boolean
+     */
     public Boolean getAbierta() {
         return abierta;
     }
 
+    /**
+     * Devuelve la referencia al modelo 3D de la puerta
+     * @return MeshView
+     */
     public MeshView getModel() {
         return model;
     }
 
+    /**
+     * Cambia el alto de la puerta
+     * @param alto Nuevo alto
+     */
     public void setAlto(double alto) {
         this.alto = alto;
     }
@@ -75,14 +100,25 @@ public class Puerta {
         this.ancho = ancho;
     }
 
+    /**
+     * Cambia el material de la puerta
+     * @param material Nuevo material
+     */
     public void setMaterial(String material) {
         this.material = material;
     }
     
+    /**
+     * Cambia la referencia al modelo 3D de la puerta
+     * @param model MeshView
+     */
     public void setModel(MeshView model) {
         this.model = model;
     }
     
+    /**
+     * Abre la puerta
+     */
     public void abrePuerta(){
         if(!abierta){
             RotateTransition rt = new RotateTransition();
@@ -95,18 +131,33 @@ public class Puerta {
         }
     }
     
+    /**
+     * Mueve el punto de rotacion de la puerta
+     * @param node Puerta a modificar
+     * @param x punto de rotacion x
+     * @param y punto de rotacion y
+     */
     private void movePivot(Node node, double x, double y){
         node.getTransforms().add(new Translate(-x,-y));
         node.setTranslateX(x); 
         node.setTranslateY(y);
     }
     
+    /**
+     * Mueve el punto de rotacion de la puerta
+     * @param node Puerta a modificar
+     * @param x Punto de rotacion en Y
+     * @param y punto de rotacion en Z
+     * @param flag 
+     */
     private void movePivot(Node node, double x, double y,Boolean flag){
         node.getTransforms().add(new Translate(0,x,y));
         node.setTranslateY(-x); 
         node.setTranslateZ(-y);
     }
-    
+    /**
+     * Cierra la puerta
+     */
     public void cierraPuerta(){
         if(abierta){
             RotateTransition rt = new RotateTransition();
@@ -118,16 +169,11 @@ public class Puerta {
             abierta = false;
         }
     }
-    
-    public void cambiaMaterial(){
-        
-    }
-    
-  
-    public void cambiaModelo(){
-        
-    }
 
+    /**
+     * Cambia el color de la puerta
+     * @param value Color nuevo
+     */
     public void setColor(Color value) {
         this.color = color;
         PhongMaterial phongMaterial = new PhongMaterial(this.color);

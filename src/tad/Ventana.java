@@ -27,6 +27,14 @@ public class Ventana {
 
 
 
+    /**
+     * Crea una nueva instancia de la clase ventana
+     * @param alto Es el alto de la ventana
+     * @param ancho Es el ancho de la ventana
+     * @param material Es el material con que esta hecha la ventana
+     * @param solIzq Es la referencia al modelo 3D izquierdo de la ventana
+     * @param solDer Es la referencia al modelo 3D derecho de la ventana
+     */
     public Ventana(double alto, double ancho, String material, MeshView solIzq, MeshView solDer) {
         this.alto = alto;
         this.ancho = ancho;
@@ -40,6 +48,10 @@ public class Ventana {
         solDer.setMaterial(phongMaterial);
     }
     
+    /**
+     * Cambia el color de la ventana
+     * @param color Color nuevo
+     */
     public void setColor(Color color) {
         this.color = color;
         PhongMaterial phongMaterial = new PhongMaterial(this.color);
@@ -47,49 +59,90 @@ public class Ventana {
         solDer.setMaterial(phongMaterial);        
     }
 
+    /**
+     * Retorna el color de la ventana
+     * @return Color
+     */
     public Color getColor() {
         return color;
-    }
-    
-    
-        
+    }      
 
+    /**
+     * Retorna el alto de la ventana
+     * @return Double
+     */
     public double getAlto() {
         return alto;
     }
 
+    /**
+     * Retorna el ancho de la ventana
+     * @return Double
+     */
     public double getAncho() {
         return ancho;
     }
 
+    /**
+     * Retorna el material de la ventana
+     * @return String
+     */
     public String getMaterial() {
         return material;
     }
 
+    /**
+     * Retorna TRUE si la ventana esta abierta y FALSE si esta cerrada
+     * @return Boolean
+     */
     public Boolean getAbiertaIzq() {
         return abiertaIzq;
     }
 
+    /**
+     * Cambia el alto de la ventana
+     * @param alto Alto nuevo
+     */
     public void setAlto(double alto) {
         this.alto = alto;
     }
 
+    /**
+     * Cambia el ancho de la ventana
+     * @param ancho Ancho nuevo
+     */
     public void setAncho(double ancho) {
         this.ancho = ancho;
     }
 
+    /**
+     * Cambia el material de la ventana
+     * @param material Material nuevo
+     */
     public void setMaterial(String material) {
         this.material = material;
     }
 
+    /**
+     * Cambia la referencia al modelo 3D de la ventana
+     * @param solIzq MeshView
+     */
     public void setSolIzq(MeshView solIzq) {
         this.solIzq = solIzq;
     }
 
+    /**
+     * Cambia la referencia al modelo 3D de la ventana
+     * @param solDer MeshView
+     */
     public void setSolDer(MeshView solDer) {
         this.solDer = solDer;
     }
 
+    /**
+     * Devuelve TRUE si la ventana esta abierta
+     * @return Boolean
+     */
     public Boolean getAbiertaDer() {
         return abiertaDer;
     }
@@ -102,6 +155,9 @@ public class Ventana {
         return solDer;
     }
     
+    /**
+     * Abre la ventana
+     */
     public void abreVentanaIzq(){
         
         if(!abiertaIzq && !abiertaDer){
@@ -116,6 +172,9 @@ public class Ventana {
         }
     }
     
+    /**
+     * Abre la ventana
+     */
     public void abreVentanaDer(){
         if(!abiertaIzq && !abiertaDer){
             TranslateTransition tt = new TranslateTransition();
@@ -129,6 +188,9 @@ public class Ventana {
         }
     }
     
+    /**
+     * Cierra la ventana
+     */
     public void cierraVentanaIzq(){
         if(abiertaIzq){
             TranslateTransition tt = new TranslateTransition();
@@ -142,6 +204,9 @@ public class Ventana {
         }
     }
     
+    /**
+     * Cierra la ventana
+     */
     public void cierraVentanaDer(){
         if(abiertaDer){
             TranslateTransition tt = new TranslateTransition();

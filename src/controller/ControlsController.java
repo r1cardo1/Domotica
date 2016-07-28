@@ -23,20 +23,25 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import tad.Administrador;
 import tad.Casa;
@@ -55,6 +60,10 @@ public class ControlsController implements Initializable {
     private Group root;
     private MainWindowController controller;
     StatusController stats;
+    private Administrador admin;
+    private Usuario user;
+    private Invitado guess;
+    private int opc; 
     @FXML TextField nombre;
     @FXML TextField apellido;
     @FXML PasswordField clave;
@@ -81,21 +90,36 @@ public class ControlsController implements Initializable {
     @FXML ColorPicker cpcocina;
     @FXML ColorPicker cpbanprin;
     @FXML ColorPicker cpbanseg;
-    Administrador admin;
-    Usuario user;
-    Invitado guess;
-    int opc;
-
-
-    
-    
+    @FXML Tab phab1;
+    @FXML Tab phab2;
+    @FXML Tab phab3;
+    @FXML Tab pcocina;
+    @FXML Tab psala;
+    @FXML Tab pbanprin;
+    @FXML Tab pbanseg;
+    @FXML Tab vsala;
+    @FXML Tab vcocina;
+    @FXML Tab vhab1;
+    @FXML Tab vhab2;
+    @FXML Tab vhab3;
+    @FXML Tab tadmin;
+    @FXML Tab lhab1;
+    @FXML Tab lhab2;
+    @FXML Tab lhab3;
+    @FXML Tab lcocina;
+    @FXML Tab lsala;
+    @FXML Tab lbanprin;
+    @FXML Tab lbanseg;
+       
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         loadTipo();
         loadColor();
+        
     }
     
+
     public void loadTipo(){
         tipo.getItems().addAll("Administrador",
                                 "Usuario",
@@ -208,6 +232,7 @@ public class ControlsController implements Initializable {
     }
     
     public void initControls(){
+        System.out.println(opc);
         if(opc==1){
             stats.setUser(admin.getNombre()+" "+admin.getApellido());
         }
@@ -217,11 +242,47 @@ public class ControlsController implements Initializable {
         if(opc==3){
             stats.setUser(guess.getNombre()+" "+guess.getApellido());
             setGuessPrivilegies();
+            System.out.println("Estableciendo Privilegios");
         }
     }
     
     public void setGuessPrivilegies(){
+        ArrayList<String> l = guess.getZonas();
+        if(l.contains("hab1")){
+            phab1.setDisable(true);
+            vhab1.setDisable(true);
+            lhab1.setDisable(true);
+        }
+        if(l.contains("hab2")){
+            phab2.setDisable(true);
+            vhab2.setDisable(true);
+            lhab2.setDisable(true);
+        }
+        if(l.contains("hab3")){
+            phab3.setDisable(true);
+            vhab3.setDisable(true);
+            lhab3.setDisable(true);
+        }
+        if(l.contains("sala")){
+            psala.setDisable(true);
+            vsala.setDisable(true);
+            lsala.setDisable(true);
+        }
+        if(l.contains("cocina")){
+            pcocina.setDisable(true);
+            vcocina.setDisable(true);
+            lcocina.setDisable(true);
+        }
+        if(l.contains("banprin")){
+            pbanprin.setDisable(true);
+            lbanprin.setDisable(true);
+        }
+        if(l.contains("banseg")){
+            pbanseg.setDisable(true);
+            lbanseg.setDisable(true);
+        }
         
+        tadmin.setDisable(true);
     }
     
     public void setStats(StatusController s){
@@ -230,18 +291,6 @@ public class ControlsController implements Initializable {
     
     public void setController(MainWindowController c){
         this.controller = c;
-    }
-    
-    @FXML public void rotateLeft(ActionEvent evt){
-        Group r;
-        r = controller.getRoot();
-        r.setRotate(r.getRotate()+5);
-    }
-    
-    @FXML public void rotateRight(ActionEvent evt){
-        Group r;
-        r = controller.getRoot();
-        r.setRotate(r.getRotate()-5);
     }
     
     @FXML public void openDoorCocina(ActionEvent evt){
@@ -253,7 +302,7 @@ public class ControlsController implements Initializable {
         home.getLobby().getPuerta().abrePuerta();
         setError(stats.getPsala(),"Abierta");
     }
-        
+    
     @FXML public void openDoorHabPrim(ActionEvent evt){
         home.getHabPrimaria().getPuerta().abrePuerta();
         setError(stats.getPhab1(),"Abierta");
@@ -347,12 +396,12 @@ public class ControlsController implements Initializable {
         home.getHabTraseraPrim().getVentana1().cierraVentanaIzq();
         home.getHabTraseraPrim().getVentana1().cierraVentanaDer();
     }
-        
+    
     @FXML public void closeWindowHabPrimTra2(ActionEvent evt){
         home.getHabTraseraPrim().getVentana2().cierraVentanaIzq();
         home.getHabTraseraPrim().getVentana2().cierraVentanaDer();
     }
-        
+    
     @FXML public void openWindowDerHabSec1(ActionEvent evt){
         home.getHabTraseraSec().getVentana1().abreVentanaDer();
     }
@@ -367,7 +416,7 @@ public class ControlsController implements Initializable {
     
     @FXML public void openWindowIzqHabSec2(ActionEvent evt){
         home.getHabTraseraSec().getVentana2().abreVentanaIzq();
-    }
+    }    
     
     @FXML public void closeWindowHabSec1(ActionEvent evt){
         home.getHabTraseraSec().getVentana1().cierraVentanaDer();
@@ -417,6 +466,32 @@ public class ControlsController implements Initializable {
         home.getCocina().getVentana3().cierraVentanaDer();
         home.getCocina().getVentana3().cierraVentanaIzq();
     }
+    
+    @FXML public void openWindowDerSala1(ActionEvent evt){
+        home.getLobby().getVentana1().abreVentanaDer();
+    }
+    
+    @FXML public void openWindowIzqSala1(ActionEvent evt){
+        home.getLobby().getVentana1().abreVentanaIzq();
+    }
+    
+    @FXML public void openWindowDerSala2(ActionEvent evt){
+        home.getLobby().getVentana2().abreVentanaDer();
+    }
+    
+    @FXML public void openWindowIzqSala2(ActionEvent evt){
+        home.getLobby().getVentana2().abreVentanaIzq();
+    }
+    
+    @FXML public void closeWindowSala1(ActionEvent evt){
+        home.getLobby().getVentana1().cierraVentanaDer();
+        home.getLobby().getVentana1().cierraVentanaIzq();
+    }
+    
+    @FXML public void closeWindowSala2(ActionEvent evt){
+        home.getLobby().getVentana2().cierraVentanaDer();
+        home.getLobby().getVentana2().cierraVentanaIzq();
+    }    
     
     @FXML public void enciendeLuzHabPrim(ActionEvent evt){
         home.getHabPrimaria().getIluminacion().enciendeLuz();
@@ -502,10 +577,10 @@ public class ControlsController implements Initializable {
     @FXML public void newUser(ActionEvent evt) throws FileNotFoundException, IOException, ClassNotFoundException{
         if(!nombre.getText().isEmpty() && !apellido.getText().isEmpty() && !clave.getText().isEmpty() && !confClave.getText().isEmpty()){
             if(tipo.getSelectionModel().getSelectedItem().equals("Administrador")){
-                if(!new File("C:/Datos").isDirectory())
-                    new File("C:/Datos").mkdirs();
+                if(!new File("C:/Data").isDirectory())
+                    new File("C:/Data").mkdirs();
                 ArrayList<Administrador> lista = cargaAdmin();
-                File f = new File("C:/Datos/AdminData");
+                File f = new File("C:/Data/AdminData");
                 FileOutputStream fos = new FileOutputStream(f);                
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
                 Administrador admin;
@@ -515,10 +590,10 @@ public class ControlsController implements Initializable {
                 oos.close();           
             }
             if(tipo.getSelectionModel().getSelectedItem().equals("Usuario")){
-                if(!new File("C:/Datos").isDirectory())
-                    new File("C:/Datos").mkdirs();
+                if(!new File("C:/Data").isDirectory())
+                    new File("C:/Data").mkdirs();
                 ArrayList<Usuario> lista = cargaUser();
-                File f = new File("C:/Datos/UserData");
+                File f = new File("C:/Data/UserData");
                 FileOutputStream fos = new FileOutputStream(f);                
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
                 Usuario user;
@@ -528,10 +603,10 @@ public class ControlsController implements Initializable {
                 oos.close();
             }
             if(tipo.getSelectionModel().getSelectedItem().equals("Invitado")){
-                if(!new File("C:/Datos").isDirectory())
-                    new File("C:/Datos").mkdirs();
+                if(!new File("C:/Data").isDirectory())
+                    new File("C:/Data").mkdirs();
                 ArrayList<Invitado> lista = cargaGuess();
-                File f = new File("C:/Datos/GuessData");
+                File f = new File("C:/Data/GuessData");
                 FileOutputStream fos = new FileOutputStream(f);                
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
                 Invitado guess;
@@ -539,6 +614,7 @@ public class ControlsController implements Initializable {
                 lista.add(loadPrivilegios(guess));
                 oos.writeObject(lista);
                 oos.close();
+                System.out.println("Archivo guardado");
             }
         }
     }
@@ -593,6 +669,17 @@ public class ControlsController implements Initializable {
         stats.setAllDoorClosed();
     }
     
+    @FXML public void singOut(ActionEvent evt) throws IOException{
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        Button b = (Button) evt.getSource();
+        Stage st = (Stage) b.getScene().getWindow();
+        st.close();
+    }
+    
     public Invitado loadPrivilegios(Invitado guess){
         if(hab1.isSelected())
             guess.addZona("hab1");
@@ -615,12 +702,16 @@ public class ControlsController implements Initializable {
         ArrayList<Administrador> lista;
         if(!new File("C:/Data").isDirectory())
             new File("C:/Data").mkdirs();
+        if(new File("C:/Data/AdminData").isFile()){
         File f = new File("C:/Data/AdminData");
         FileInputStream fis = new FileInputStream(f);
         ObjectInputStream ois = new ObjectInputStream(fis);
         lista = (ArrayList<Administrador>) ois.readObject();
         if(lista!=null)
             return lista;
+        else
+            lista = new ArrayList<>();
+        }
         else
             lista = new ArrayList<>();
         return lista;
@@ -630,12 +721,16 @@ public class ControlsController implements Initializable {
         ArrayList<Usuario> lista;
         if(!new File("C:/Data").isDirectory())
             new File("C:/Data").mkdirs();
+        if(new File("C:/Data/UserData").isFile()){
         File f = new File("C:/Data/UserData");
         FileInputStream fis = new FileInputStream(f);
         ObjectInputStream ois = new ObjectInputStream(fis);
         lista = (ArrayList<Usuario>) ois.readObject();
         if(lista!=null)
             return lista;
+        else
+            lista = new ArrayList<>();
+        }
         else
             lista = new ArrayList<>();
         return lista;
@@ -645,12 +740,16 @@ public class ControlsController implements Initializable {
         ArrayList<Invitado> lista;
         if(!new File("C:/Data").isDirectory())
             new File("C:/Data").mkdirs();
+        if(new File("C:/Data/GuessData").isFile()){
         File f = new File("C:/Data/GuessData");
         FileInputStream fis = new FileInputStream(f);
         ObjectInputStream ois = new ObjectInputStream(fis);
         lista = (ArrayList<Invitado>) ois.readObject();
         if(lista!=null)
             return lista;
+        else
+            lista = new ArrayList<>();
+        }
         else
             lista = new ArrayList<>();
         return lista;

@@ -25,6 +25,7 @@
                </children>
             </Pane>
             <Button layoutX="196.0" layoutY="254.0" mnemonicParsing="false" onAction="#logIn" text="Login" />
+            <Label fx:id="result" layoutX="204.0" layoutY="223.0" textFill="RED" />
          </children>
       </Pane>
    </children>

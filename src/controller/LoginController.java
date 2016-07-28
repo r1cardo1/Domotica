@@ -5,8 +5,13 @@
  */
 package controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +22,7 @@ import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
 import javafx.scene.SceneAntialiasing;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -51,6 +57,7 @@ public class LoginController implements Initializable {
     private MainWindowController stage1;
     private ControlsController stage2;    
     private Casa home = new Casa();
+    @FXML Label result;
     Administrador administrador;
     Usuario usuario;
     Invitado guess;
@@ -63,19 +70,61 @@ public class LoginController implements Initializable {
         
     }
     
-    @FXML public void logIn(ActionEvent evt) throws IOException{
+    @FXML public void logIn(ActionEvent evt) throws IOException, FileNotFoundException, ClassNotFoundException{
+        
         if(!nombre.getText().isEmpty() && !clave.getText().isEmpty()){
+            result.setText("");
+            Button b = (Button) evt.getSource();
+            Stage scene = (Stage) b.getScene().getWindow();
             if(nombre.getText().equals("Admin") && clave.getText().equals("111111")){
-                startHome(1);
                 administrador = new Administrador("ROOT","ROOT","111111");
-                Button b = (Button) evt.getSource();
-                Stage scene = (Stage) b.getScene().getWindow();
-                scene.close();                
+                startHome(1);               
+                scene.close();
             }
+            if(checkUser(nombre.getText(),clave.getText(),scene)){
+                scene.close();
+            }
+            else{
+                result.setText("Usuario o Contraseña incorrectos");
+            }
+            
         }
     }
     
-    public void startHome(int opc) throws IOException{
+    public Boolean checkUser(String u, String p,Stage s) throws IOException, FileNotFoundException, ClassNotFoundException{
+        ArrayList<Administrador> admin = cargaAdmin();
+        ArrayList<Usuario> user = cargaUser();
+        ArrayList<Invitado> guess = cargaGuess();
+        for(int i=0;i<admin.size();i++){
+            if(admin.get(i).getNombre().equals(u))
+                if(admin.get(i).getClave().equals(p)){
+                    this.administrador = admin.get(i);
+                    startHome(1);                   
+                    return true;                    
+                }
+        }
+        for(int i=0;i<user.size();i++){
+            if(user.get(i).getNombre().equals(u))
+                if(user.get(i).getClave().equals(p)){
+                    this.usuario = user.get(i);
+                    startHome(2);
+                    
+                    return true;                    
+                }
+        }
+        for(int i=0;i<guess.size();i++){
+            System.out.println(guess.get(i).getNombre());
+            if(guess.get(i).getNombre().equals(u))
+                if(guess.get(i).getClave().equals(p)){
+                    this.guess = guess.get(i);
+                    startHome(3);                    
+                    return true;                    
+                }
+        }
+        return false;
+    }
+    
+    public void startHome(int opcc) throws IOException{
     Stage stage=new Stage();
     final Group root = new Group();
     addFloor(root);    
@@ -104,13 +153,14 @@ public class LoginController implements Initializable {
         stage2 = loaderPanel.getController();
         stage2.setController(stage1);  
         stage2.setStats(loaderStats.getController());
-        stage2.setOpc(opc);
-            if(opc==1)
+        stage2.setOpc(opcc);
+            if(opcc==1)
                 stage2.setAdmin(administrador);
-            if(opc==2)
+            if(opcc==2)
                 stage2.setUser(usuario);
-            if(opc==3)
+            if(opcc==3)
                 stage2.setGuess(guess);
+        stage2.initControls();
     
     // init TAD Data
         initD(homeLoad);    
@@ -121,11 +171,7 @@ public class LoginController implements Initializable {
     stage.setTitle("JavaFX 3D");
     stage.setX(0);
     stage.setY(0);
-    stage.show();
-    
-    
-    
-    
+    stage.show();    
     }
     
     public PerspectiveCamera addCamera(){
@@ -200,4 +246,60 @@ public class LoginController implements Initializable {
         return null;
     }
     
+    public ArrayList<Administrador> cargaAdmin() throws FileNotFoundException, IOException, ClassNotFoundException{
+        ArrayList<Administrador> lista;
+        if(!new File("C:/Data").isDirectory())
+            new File("C:/Data").mkdirs();
+        if(new File("C:/Data/AdminData").isFile()){
+        File f = new File("C:/Data/AdminData");
+        FileInputStream fis = new FileInputStream(f);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        lista = (ArrayList<Administrador>) ois.readObject();
+        if(lista!=null)
+            return lista;
+        else
+            lista = new ArrayList<>();
+        }
+        else
+            lista = new ArrayList<>();
+        return lista;
+    }
+    
+    public ArrayList<Usuario> cargaUser() throws FileNotFoundException, IOException, ClassNotFoundException{
+        ArrayList<Usuario> lista;
+        if(!new File("C:/Data").isDirectory())
+            new File("C:/Data").mkdirs();
+        if(new File("C:/Data/UserData").isFile()){
+        File f = new File("C:/Data/UserData");
+        FileInputStream fis = new FileInputStream(f);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        lista = (ArrayList<Usuario>) ois.readObject();
+        if(lista!=null)
+            return lista;
+        else
+            lista = new ArrayList<>();
+        }
+        else
+            lista = new ArrayList<>();
+        return lista;
+    }
+    
+    public ArrayList<Invitado> cargaGuess() throws FileNotFoundException, IOException, ClassNotFoundException{
+        ArrayList<Invitado> lista;
+        if(!new File("C:/Data").isDirectory())
+            new File("C:/Data").mkdirs();
+        if(new File("C:/Data/GuessData").isFile()){
+        File f = new File("C:/Data/GuessData");
+        FileInputStream fis = new FileInputStream(f);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        lista = (ArrayList<Invitado>) ois.readObject();
+        if(lista!=null)
+            return lista;
+        else
+            lista = new ArrayList<>();
+        }
+        else
+            lista = new ArrayList<>();
+        return lista;
+    }
 }

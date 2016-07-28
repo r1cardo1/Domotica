@@ -19,6 +19,12 @@ public class Luz {
     private MeshView luz;
 
 
+    /**
+     * Crea una nueva instancia de la clase Luz
+     * @param intensidad Es la intensidad de la luz
+     * @param color Es el color de la Luz
+     * @param luz Es la referencia al modelo 3D de la luz
+     */
     public Luz(double intensidad, Color color,MeshView luz) {
         this.intensidad = intensidad;
         this.color = color;
@@ -26,16 +32,18 @@ public class Luz {
         PhongMaterial mat = new PhongMaterial(Color.LIGHTSLATEGRAY);
         luz.setMaterial(mat);
     }
-
-    public void cambiaColor(){
-        
-    }
     
+    /**
+     * Enciende la luz
+     */
     public void enciendeLuz(){
         PhongMaterial mat = new PhongMaterial(this.color);
         this.luz.setMaterial(mat);
     }
     
+    /**
+     * Apaga la luz
+     */
     public void apagaLuz(){
         PhongMaterial mat = new PhongMaterial(Color.LIGHTSLATEGRAY);
         luz.setMaterial(mat);

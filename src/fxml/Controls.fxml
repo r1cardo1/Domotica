@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="900.0" rotate="60.0" stylesheets="@../css/tabPane.css" translateX="-202.0" translateY="-410.0" translateZ="63.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControlsController">
+<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="900.0" stylesheets="@../css/tabPane.css" translateX="-202.0" translateY="-410.0" translateZ="63.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControlsController">
    <rotationAxis>
       <Point3D x="1.0" />
    </rotationAxis>
@@ -22,7 +22,7 @@
                      <children>
                         <TabPane prefHeight="171.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <tabs>
-                            <Tab text="Habitacion Primaria">
+                            <Tab fx:id="phab1" text="Habitacion Primaria">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
                                        <children>
@@ -36,7 +36,7 @@
                                     </AnchorPane>
                               </content>
                             </Tab>
-                            <Tab text="Habitacion Segundaria">
+                            <Tab fx:id="phab2" text="Habitacion Segundaria">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
                                        <children>
@@ -50,7 +50,7 @@
                                     </AnchorPane>
                               </content>
                             </Tab>
-                              <Tab text="Habitacion Huesped">
+                              <Tab fx:id="phab3" text="Habitacion Huesped">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
                                        <children>
@@ -64,7 +64,7 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab text="Sala">
+                              <Tab fx:id="psala" text="Sala">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
                                        <children>
@@ -78,7 +78,7 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab text="Cocina">
+                              <Tab fx:id="pcocina" text="Cocina">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
                                        <children>
@@ -92,7 +92,7 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab text="Baño Principal">
+                              <Tab fx:id="pbanprin" text="Baño Principal">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
                                        <children>
@@ -106,7 +106,7 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab text="Baño Segundario">
+                              <Tab fx:id="pbanseg" text="Baño Segundario">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
                                        <children>

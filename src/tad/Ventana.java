@@ -23,6 +23,9 @@ public class Ventana {
     private Boolean abiertaDer;
     private MeshView solIzq;
     private MeshView solDer;
+    private Color color;
+
+
 
     public Ventana(double alto, double ancho, String material, MeshView solIzq, MeshView solDer) {
         this.alto = alto;
@@ -36,6 +39,20 @@ public class Ventana {
         solIzq.setMaterial(phongMaterial);
         solDer.setMaterial(phongMaterial);
     }
+    
+    public void setColor(Color color) {
+        this.color = color;
+        PhongMaterial phongMaterial = new PhongMaterial(this.color);
+        solIzq.setMaterial(phongMaterial);
+        solDer.setMaterial(phongMaterial);        
+    }
+
+    public Color getColor() {
+        return color;
+    }
+    
+    
+        
 
     public double getAlto() {
         return alto;
@@ -137,5 +154,7 @@ public class Ventana {
             abiertaDer = false;
         }
     }
+    
+    
     
 }

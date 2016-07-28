@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="900.0" stylesheets="@../css/tabPane.css" translateX="-202.0" translateY="-410.0" translateZ="63.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControlsController">
+<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="900.0" rotate="60.0" stylesheets="@../css/tabPane.css" translateX="-202.0" translateY="-410.0" translateZ="63.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControlsController">
    <rotationAxis>
       <Point3D x="1.0" />
    </rotationAxis>
@@ -468,22 +468,23 @@
                                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
                                                          <children>
                                                             <Text fill="WHITE" layoutX="21.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
-                                                            <TextField layoutX="81.0" layoutY="16.0" />
-                                                            <TextField layoutX="81.0" layoutY="44.0" />
+                                                            <TextField fx:id="nombre" layoutX="81.0" layoutY="16.0" />
+                                                            <TextField fx:id="apellido" layoutX="81.0" layoutY="44.0" />
                                                             <Text fill="WHITE" layoutX="21.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido" />
                                                             <Text fill="WHITE" layoutX="21.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clave" />
-                                                            <PasswordField layoutX="81.0" layoutY="72.0" />
+                                                            <PasswordField fx:id="clave" layoutX="81.0" layoutY="72.0" />
                                                             <Text fill="WHITE" layoutX="270.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirme clave" />
-                                                            <PasswordField layoutX="358.0" layoutY="16.0" />
+                                                            <PasswordField fx:id="confClave" layoutX="358.0" layoutY="16.0" />
                                                             <Text fill="WHITE" layoutX="270.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo de usuario" />
-                                                            <ComboBox layoutX="358.0" layoutY="44.0" prefWidth="150.0" />
-                                                            <CheckBox layoutX="574.0" layoutY="20.0" mnemonicParsing="false" text="Habitacion 1" textFill="WHITE" />
-                                                            <CheckBox layoutX="574.0" layoutY="40.0" mnemonicParsing="false" text="Habitacion 2" textFill="WHITE" />
-                                                            <CheckBox layoutX="574.0" layoutY="59.0" mnemonicParsing="false" text="Habitacion 3" textFill="WHITE" />
-                                                            <CheckBox layoutX="574.0" layoutY="78.0" mnemonicParsing="false" text="Baño Principal" textFill="WHITE" />
-                                                            <CheckBox layoutX="696.0" layoutY="20.0" mnemonicParsing="false" text="Baño Segundario" textFill="WHITE" />
-                                                            <CheckBox layoutX="696.0" layoutY="40.0" mnemonicParsing="false" text="Sala" textFill="WHITE" />
-                                                            <Button layoutX="764.0" layoutY="72.0" mnemonicParsing="false" text="Crear Usuario" />
+                                                            <ComboBox fx:id="tipo" layoutX="358.0" layoutY="44.0" prefWidth="150.0" />
+                                                            <CheckBox fx:id="hab1" layoutX="574.0" layoutY="20.0" mnemonicParsing="false" text="Habitacion 1" textFill="WHITE" />
+                                                            <CheckBox fx:id="hab2" layoutX="574.0" layoutY="40.0" mnemonicParsing="false" text="Habitacion 2" textFill="WHITE" />
+                                                            <CheckBox fx:id="hab3" layoutX="574.0" layoutY="59.0" mnemonicParsing="false" text="Habitacion 3" textFill="WHITE" />
+                                                            <CheckBox fx:id="banprin" layoutX="574.0" layoutY="78.0" mnemonicParsing="false" text="Baño Principal" textFill="WHITE" />
+                                                            <CheckBox fx:id="banseg" layoutX="696.0" layoutY="20.0" mnemonicParsing="false" text="Baño Segundario" textFill="WHITE" />
+                                                            <CheckBox fx:id="sala" layoutX="696.0" layoutY="40.0" mnemonicParsing="false" text="Sala" textFill="WHITE" />
+                                                            <Button layoutX="764.0" layoutY="72.0" mnemonicParsing="false" onAction="#newUser" text="Crear Usuario" />
+                                                            <CheckBox fx:id="cocina" layoutX="696.0" layoutY="61.0" mnemonicParsing="false" text="Cocina" textFill="WHITE" />
                                                          </children>
                                                       </AnchorPane>
                                                 </content>
@@ -564,8 +565,8 @@
                                                          <children>
                                                             <Pane layoutX="330.0" layoutY="17.0">
                                                                <children>
-                                                                  <Button contentDisplay="TOP" mnemonicParsing="false" styleClass="button-abre-ventana" text="Abrir Todas" />
-                                                                  <Button contentDisplay="TOP" layoutX="154.0" mnemonicParsing="false" styleClass="button-cierra-ventana" text="Cerrar Todas" />
+                                                                  <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#openAllWindow" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-abre-ventana" text="Abrir Todas" />
+                                                                  <Button contentDisplay="TOP" layoutX="154.0" mnemonicParsing="false" onAction="#closeAllWindow" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-cierra-ventana" text="Cerrar Todas" />
                                                                </children>
                                                             </Pane>
                                                          </children>
@@ -580,37 +581,42 @@
                                                                <tabs>
                                                                   <Tab text="Habitacion 1">
                                                                      <content>
-                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                                                           <children>
+                                                                              <ColorPicker fx:id="cvhab1" layoutX="406.0" layoutY="28.0" />
+                                                                           </children></AnchorPane>
                                                                      </content>
                                                                   </Tab>
                                                                   <Tab text="Habitacion 2">
                                                                      <content>
-                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                                                           <children>
+                                                                              <ColorPicker fx:id="cvhab2" layoutX="406.0" layoutY="28.0" />
+                                                                           </children></AnchorPane>
                                                                      </content>
                                                                   </Tab>
                                                                   <Tab text="Habitacion 3">
                                                                      <content>
-                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                                                           <children>
+                                                                              <ColorPicker fx:id="cvhab3" layoutX="406.0" layoutY="28.0" />
+                                                                           </children></AnchorPane>
                                                                      </content>
                                                                   </Tab>
                                                                   <Tab text="Sala">
                                                                      <content>
-                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                                                           <children>
+                                                                              <ColorPicker fx:id="cvsala" layoutX="406.0" layoutY="28.0" />
+                                                                           </children></AnchorPane>
                                                                      </content>
                                                                   </Tab>
                                                                   <Tab text="Cocina">
                                                                      <content>
-                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
-                                                                     </content>
-                                                                  </Tab>
-                                                                  <Tab text="Baño 1">
-                                                                     <content>
-                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
-                                                                     </content>
-                                                                  </Tab>
-                                                                  <Tab text="Baño 2">
-                                                                     <content>
-                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                                                           <children>
+                                                                              <ColorPicker fx:id="cvcocina" layoutX="406.0" layoutY="28.0" />
+                                                                           </children></AnchorPane>
                                                                      </content>
                                                                   </Tab>
                                                                </tabs>
@@ -637,8 +643,8 @@
                                                          <children>
                                                             <Pane layoutX="330.0" layoutY="17.0">
                                                                <children>
-                                                                  <Button contentDisplay="TOP" mnemonicParsing="false" styleClass="button-abre-puerta" text="Abrir Todas" />
-                                                                  <Button contentDisplay="TOP" layoutX="154.0" mnemonicParsing="false" styleClass="button-cierra-puerta" text="Cerrar Todas" />
+                                                                  <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#openAllDoor" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-abre-puerta" text="Abrir Todas" />
+                                                                  <Button contentDisplay="TOP" layoutX="154.0" mnemonicParsing="false" onAction="#closeAllDoor" onMouseEntered="#focusIn" onMouseExited="#focusOut" styleClass="button-cierra-puerta" text="Cerrar Todas" />
                                                                </children>
                                                             </Pane>
                                                          </children>
@@ -653,37 +659,58 @@
                                                               <tabs>
                                                                 <Tab text="Habitacion 1">
                                                                   <content>
-                                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                                                           <children>
+                                                                              <ColorPicker fx:id="cphab1" layoutX="410.0" layoutY="30.0" />
+                                                                           </children></AnchorPane>
                                                                   </content>
                                                                 </Tab>
                                                                 <Tab text="Habitacion 2">
                                                                   <content>
-                                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                                                           <children>
+                                                                              <ColorPicker fx:id="cphab2" layoutX="406.0" layoutY="28.0" />
+                                                                           </children></AnchorPane>
                                                                   </content>
                                                                 </Tab>
                                                                   <Tab text="Habitacion 3">
                                                                      <content>
-                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                                                           <children>
+                                                                              <ColorPicker fx:id="cphab3" layoutX="406.0" layoutY="28.0" />
+                                                                           </children></AnchorPane>
                                                                      </content>
                                                                   </Tab>
                                                                   <Tab text="Sala">
                                                                      <content>
-                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                                                           <children>
+                                                                              <ColorPicker fx:id="cpsala" layoutX="406.0" layoutY="28.0" />
+                                                                           </children></AnchorPane>
                                                                      </content>
                                                                   </Tab>
                                                                   <Tab text="Cocina">
                                                                      <content>
-                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                                                           <children>
+                                                                              <ColorPicker fx:id="cpcocina" layoutX="406.0" layoutY="28.0" />
+                                                                           </children></AnchorPane>
                                                                      </content>
                                                                   </Tab>
                                                                   <Tab text="Baño 1">
                                                                      <content>
-                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                                                           <children>
+                                                                              <ColorPicker fx:id="cpbanprin" layoutX="406.0" layoutY="28.0" />
+                                                                           </children></AnchorPane>
                                                                      </content>
                                                                   </Tab>
                                                                   <Tab text="Baño 2">
                                                                      <content>
-                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab" />
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="fondotab">
+                                                                           <children>
+                                                                              <ColorPicker fx:id="cpbanseg" layoutX="406.0" layoutY="28.0" />
+                                                                           </children></AnchorPane>
                                                                      </content>
                                                                   </Tab>
                                                               </tabs>

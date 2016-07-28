@@ -31,15 +31,14 @@ public class Puerta {
     private String material;
     private Boolean abierta;
     private MeshView model;
+    private Color color;
 
     public Puerta(double alto, double ancho, String material, MeshView model) {
         this.alto = alto;
         this.ancho = ancho;
         this.material = material;
         this.model = model;
-        abierta = false;
-        TriangleMesh mesh = (TriangleMesh) model.getMesh();
-        System.out.println(mesh.getTexCoordElementSize()+" "+model.getId());
+        abierta = false;        
         PhongMaterial phongMaterial = new PhongMaterial(Color.BURLYWOOD);
         model.setMaterial(phongMaterial);
         if(model.getLayoutBounds().getDepth()<10)
@@ -124,29 +123,14 @@ public class Puerta {
         
     }
     
-     public Image createImage( double size) {
-
-        Random rnd = new Random();
-
-        int width = (int) size;
-        int height = (int) size;
-
-        WritableImage wr = new WritableImage(width, height);
-        PixelWriter pw = wr.getPixelWriter();
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-
-                Color color = Color.rgb(rnd.nextInt( 256), rnd.nextInt( 256), rnd.nextInt( 256));
-                pw.setColor(x, y, color);
-
-            }
-        }
-
-        return wr;
-
-    }
-    
+  
     public void cambiaModelo(){
         
+    }
+
+    public void setColor(Color value) {
+        this.color = color;
+        PhongMaterial phongMaterial = new PhongMaterial(this.color);
+        model.setMaterial(phongMaterial);
     }
 }

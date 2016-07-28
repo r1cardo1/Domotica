@@ -5,11 +5,13 @@
  */
 package tad;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Ricardo Marcano
  */
-public class Administrador {
+public class Administrador implements Serializable{
     private String nombre;
     private String apellido;
     private String clave;

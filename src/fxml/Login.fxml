@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
-    
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="login-background" stylesheets="@../css/tabPane.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+      <Pane layoutX="82.0" layoutY="33.0" prefHeight="335.0" prefWidth="437.0" styleClass="login-pane">
+         <children>
+            <Text fill="WHITE" layoutX="153.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
+               <font>
+                  <Font name="Gulim" size="51.0" />
+               </font>
+            </Text>
+            <Pane layoutX="98.0" layoutY="139.0">
+               <children>
+                  <Text fill="WHITE" layoutX="8.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
+                  <TextField fx:id="nombre" layoutX="92.0" />
+                  <PasswordField fx:id="clave" layoutX="92.0" layoutY="32.0" />
+                  <Text fill="WHITE" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña" />
+               </children>
+            </Pane>
+            <Button layoutX="196.0" layoutY="254.0" mnemonicParsing="false" onAction="#logIn" text="Login" />
+         </children>
+      </Pane>
+   </children>
 </AnchorPane>

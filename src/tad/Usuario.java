@@ -5,11 +5,13 @@
  */
 package tad;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Ricardo Marcano
  */
-public class Usuario {
+public class Usuario implements Serializable{
     private String nombre;
     private String apellido;
     private String clave;

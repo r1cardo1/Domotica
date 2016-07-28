@@ -5,13 +5,14 @@
  */
 package tad;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Ricardo Marcano
  */
-public class Invitado {
+public class Invitado implements Serializable{
     private String nombre;
     private String apellido;
     private String clave;

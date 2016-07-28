@@ -6,6 +6,7 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
 import javafx.scene.SceneAntialiasing;
@@ -37,77 +38,10 @@ public class Domotica extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-    final Group root = new Group();
-    addFloor(root);    
-    // Load home graphic
-    
-    FXMLLoader loaderHome = new FXMLLoader(getClass().getResource("/fxml/Drawing3.fxml"));
-
-    // Load control panel
-    
-    FXMLLoader loaderPanel = new FXMLLoader(getClass().getResource("/fxml/Controls.fxml"));
-    
-    // Load Stats panel
-    
-    FXMLLoader loaderStats = new FXMLLoader(getClass().getResource("/fxml/Status.fxml"));
-
-    // Add both to scene
-    AnchorPane statsPne = loaderStats.load();
-    Group homeLoad = loaderHome.load();
-    root.getChildren().add(loaderPanel.load());
-    root.getChildren().add(homeLoad);
-    root.getChildren().add(statsPne);
-        
-    // Get ready controllers
-    
-        stage1 = loaderHome.getController();
-        stage2 = loaderPanel.getController();
-        stage2.setController(stage1);  
-        stage2.setStats(loaderStats.getController());
-    
-    // init TAD Data
-        initD(homeLoad);    
-    stage2.setCasa(home);
-    Scene scene = new Scene(root,1300,700,true,SceneAntialiasing.BALANCED);
-    scene.setCamera(addCamera());
-    
-    scene.setOnKeyPressed(evt ->{
-    if(evt.getCode() == KeyCode.A){
-        
-        statsPne.setTranslateX(statsPne.getTranslateX()-5);
-        System.out.println(statsPne.getTranslateX());
-        
-    }
-    if(evt.getCode() == KeyCode.D){
-        statsPne.setTranslateX(statsPne.getTranslateX()+5);
-        System.out.println(statsPne.getTranslateX());
-    }
-    if(evt.getCode() == KeyCode.W){
-        statsPne.setTranslateY(statsPne.getTranslateY()+5);
-        System.out.println(statsPne.getTranslateY());
-    }
-    if(evt.getCode() == KeyCode.S){
-        statsPne.setTranslateY(statsPne.getTranslateY()-5);
-        System.out.println(statsPne.getTranslateY());
-    }
-    if(evt.getCode() == KeyCode.R){
-        statsPne.setTranslateZ(statsPne.getTranslateZ()+5);
-        System.out.println(statsPne.getTranslateZ());
-    }
-    if(evt.getCode() == KeyCode.F){
-        statsPne.setTranslateZ(statsPne.getTranslateZ()-5);
-        System.out.println(statsPne.getTranslateZ());
-    }
-    
-    });
+    Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
+    Scene scene = new Scene(root);
     stage.setScene(scene);
-    stage.setTitle("JavaFX 3D");
-    stage.setX(0);
-    stage.setY(0);
     stage.show();
-    
-    
-    
     
     }
     
